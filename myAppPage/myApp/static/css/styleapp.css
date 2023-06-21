@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Verdana";
+    list-style: none;
+}
+
+.container-nav button a:hover {
+    border-radius: 25px;
+    background-color: white;
+    color: black;
+    border-color: white;
+}
+
+/* login */
+
+.input-box .icon {
+    position: absolute;
+    right: 28px;
+    font-size: 1.2em;
+    /*color: #96a0a8;*/
+    color: black;
+    line-height: 120px;
+}
