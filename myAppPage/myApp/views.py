@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import usuarios
+from django.contrib import messages
+from django.contrib.auth.models import User
 # from django.http import HttpResponse
 
 # Create your views here.
@@ -43,3 +45,20 @@ def registrar(request):
     #     return redirect('loginapp.html')
 
     # return render(request, 'signupapp.html')
+
+def loginUser(request):
+    if request.method == 'POST':
+        users = request.POST.get('userLogin')
+        password = request.POST.get('userPassword')
+
+        try:
+            user = User.objects.get(username=users)
+            if user.check_password(password):
+                messages.success(request, '¡Inicio de sesión exitoso!')
+                return redirect('/homepageapp')  # Redirige a la página de inicio después del inicio de sesión exitoso
+            else:
+                messages.error(request, 'Contraseña incorrecta')  # Muestra un mensaje de error si la contraseña es incorrecta
+        except User.DoesNotExist:
+            messages.error(request, 'Usuario no registrado')  # Muestra un mensaje de error si el usuario no está registrado
+
+    return render(request, 'loginapp.html')
