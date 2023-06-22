@@ -22,7 +22,7 @@ def signup(request):
 def recover(request):
     return render(request, 'recoverpassword.html')
 
-def registrar(request):
+def registerUser(request):
     if request.method == 'POST':
         userInsert = usuarios()
         userInsert.usuario = request.POST['user']
@@ -48,17 +48,26 @@ def registrar(request):
 
 def loginUser(request):
     if request.method == 'POST':
-        users = request.POST.get('userLogin')
+        username = request.POST.get('userLogin')
         password = request.POST.get('userPassword')
 
-        try:
-            user = User.objects.get(username=users)
-            if user.check_password(password):
-                messages.success(request, '¡Inicio de sesión exitoso!')
-                return redirect('/homepageapp')  # Redirige a la página de inicio después del inicio de sesión exitoso
-            else:
-                messages.error(request, 'Contraseña incorrecta')  # Muestra un mensaje de error si la contraseña es incorrecta
-        except User.DoesNotExist:
-            messages.error(request, 'Usuario no registrado')  # Muestra un mensaje de error si el usuario no está registrado
+        usuarios_list = usuarios.objects.filter(usuario=username, contraseña=password)
+
+        if usuarios_list.exists():
+            request.session['usuario'] = usuarios_list[0].usuario
+            return render(request, 'homepageapp.html')
+        else:
+            messages.success(request, 'Usuario o contraseña incorrectos!!!')
 
     return render(request, 'loginapp.html')
+    # if request.method == 'POST':
+    #     try:
+    #         detalleUsuario = usuarios.objects.get(usuario = request.POST['userLogin'], contraseña=request.POST['userPassword'])
+    #         request.session['usuario'] = detalleUsuario.usuario
+    #         return render(request, 'homepageapp.html')
+    #     except usuarios.DoesNotExist as e:
+    #         messages.success(request, 'Usuario o contraseña incorrectos!!!')
+    #         return render(request, 'loginapp.html')
+    # else:
+    #    return render(request, 'loginapp.html')
+    
