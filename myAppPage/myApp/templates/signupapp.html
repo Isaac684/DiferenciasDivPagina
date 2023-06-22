@@ -8,26 +8,26 @@
     <div class="p-4">
 
         <h2 class="text-white text-center mb-3">Registration</h2>
-        <form action="#" method="POST">
+        <form method="POST">
             {% csrf_token %}
             <div class="input-box">
                 <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
                 <label class="my-2 text-white px-1">User</label>
-                <input type="text" id="user" class="form-control rounded-pill">
+                <input type="text" id="user" name="user" class="form-control rounded-pill">
                 <small id="userError" class="form-text text-danger text-center"></small>
             </div>
 
             <div class="input-box">
                 <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
                 <label class="my-2 text-white px-1">Email</label>
-                <input type="Email" id="email" class="form-control rounded-pill">
+                <input type="Email" id="email" name="email" class="form-control rounded-pill">
                 <small id="emailError" class="form-text text-danger text-center"></small>
             </div>
 
             <div class="input-box">
                 <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
                 <label class="my-2 text-white px-1">Password</label>
-                <input type="password" id="password" class="form-control rounded-pill">
+                <input type="password" id="password" name="password" class="form-control rounded-pill">
                 <small id="passwordError" class="form-text text-danger text-center"></small>
             </div>
 
@@ -36,7 +36,7 @@
             </div>
 
             <div class="text-center">
-                <p class="text-white">¿Ya tienes una cuenta? <a href="/loginapp.html" class="text-warning">Login</a></p>
+                <p class="text-white">¿Ya tienes una cuenta? <a href="/loginapp" class="text-warning">Login</a></p>
             </div>
         </form>
 
