@@ -13,10 +13,10 @@
 
 <body class="d-flex justify-content-center align-items-center" style="margin-top: 125px; background-color: #848478">
 
-    <header class="fixed-top" style="background-color: #FFFFFF">
+    <header class="fixed-top border-bottom border-dark" style="background-color: #FFFFFF;">
 
-        <div class="container-fluid d-flex justify-content-between align-items-center mx-4 p-3 py-4">
-            <h2 class="logo text-dark">Logo</h2>
+        <div class=" container-fluid d-flex justify-content-between align-items-center">
+            <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="" style="height: 90px;">
 
             <nav class="container-nav d-flex mx-4">
                 <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="/loginapp">Login</a></button>
@@ -27,7 +27,7 @@
 
     </header>
 
-    <main class="container-fluid d-flex align-self-center">
+    <main class="container-fluid d-flex align-self-center" style="background-color: white;">
         {% block content %}
         {% endblock %}
     </main>

@@ -37,11 +37,10 @@ def loginUser(request):
 
         if usuarios_list.exists():
             request.session['usuario'] = usuarios_list[0].usuario
-            return render(request, 'homepageapp.html')
+            return redirect('/homepage')
         else:
             messages.success(request, 'Usuario o contraseña incorrectos!!!')
-
-    return render(request, 'loginapp.html')
+            return render(request, 'loginapp.html')
 
 def changePassword(request):
     if request.method == 'POST':
