@@ -7,7 +7,7 @@
 
         <h2 class="text-white text-center">Login</h2>
 
-        <form method="POST"  action="{% url 'loginUser' %}">
+        <form method="POST" action="{% url 'loginUser' %}">
             {% csrf_token %}
 
             <div class="input-box">
@@ -29,6 +29,16 @@
                 </div>
                 <a href="/recover" class="text-white">¿Contraseña olvidada?</a>
             </div>
+
+            <!-- {% block messages %}
+                {% if messages %}
+                    <div class="text-center">
+                        {% for msg in messages %}
+                            <small class="text-danger">{{ msg }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endblock %} -->
 
             {% if messages %}
             <div class="text-center">

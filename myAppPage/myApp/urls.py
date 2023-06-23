@@ -8,4 +8,5 @@ urlpatterns = [
     path('recover', views.recover),
     path('registerUser', views.registerUser, name='registerUser'),
     path('loginUser', views.loginUser, name='loginUser'),
+    path('changePassword', views.changePassword, name='changePassword'),
 ]
