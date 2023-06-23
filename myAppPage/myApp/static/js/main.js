@@ -1,8 +1,8 @@
 const buttonAceptar = document.querySelector('#button-aceptar')
 const inputPuntos = document.querySelector('#cantidad-puntos')
+const ingresarXY = document.querySelector('.puntosXY')
 let puntoIngresado = false;
 
-const ingresarPuntos = document.querySelectorAll()
 
 inputPuntos.addEventListener('keypress', function (e) {
     var key = e.which || e.keyCode; // Obtener el código de tecla presionada
@@ -19,11 +19,19 @@ inputPuntos.addEventListener('keypress', function (e) {
     // if (key === 46 && !puntoIngresado) {
     //     puntoIngresado = true;
     // }
-});
+})
 
 buttonAceptar.addEventListener('click',function () {
     cantPuntos = inputPuntos.value
     if (cantPuntos != '') {
-        alert('siuuuuuuuuuuuuuu')
+        ingresarXY.innerHTML= ''
+        for (let i = 0; i < cantPuntos; i++) {
+            ingresarXY.innerHTML += `
+            <label class="form-label">Ingrese el valor para el punto ${i+1}:</label>
+            <div class="input-group mb-3" id="grupoPuntos${i+1}">
+                <input type="text" class="form-control" placeholder="Valor de x${i+1}">
+                <input type="text" class="form-control" placeholder="Valor de y${i+1}">
+            </div>`
+        }
     }
 })
