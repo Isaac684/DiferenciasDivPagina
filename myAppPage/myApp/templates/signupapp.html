@@ -4,34 +4,41 @@
 
 {% block content %}
 
-<div class="border border-white-50 rounded" style="width: 400px; height: 510px; backdrop-filter: blur(20px); box-shadow: 0 0 30px rgba(0, 0, 0, .5); background-color: #5e5e5e">
+<div class="border border-white-50 rounded" style="width: 400px; height: 535px; backdrop-filter: blur(20px); box-shadow: 0 0 30px rgba(0, 0, 0, .5); background-color: #5e5e5e">
     <div class="p-4">
 
-        <h2 class="text-white text-center mb-3">Registration</h2>
+        <h2 class="text-white text-center mb-1">Registration</h2>
         <form method="POST" action="{% url 'registerUser' %}" id="registerForm">
             {% csrf_token %}
             <div class="input-box">
-                <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
-                <label class="my-2 text-white px-1">User</label>
+                <span class="icon" style="line-height: 112px;"><ion-icon name="person-circle-outline"></ion-icon></span>
+                <label class="my-1 text-white px-1">Full Name</label>
+                <input type="text" id="fullName" name="fullName" class="form-control rounded-pill">
+                <small id="fullNameError" class="form-text text-danger text-center"></small>
+            </div>
+
+            <div class="input-box">
+                <span class="icon" style="line-height: 112px;"><ion-icon name="person-circle-outline"></ion-icon></span>
+                <label class="my-1 text-white px-1">User</label>
                 <input type="text" id="user" name="user" class="form-control rounded-pill">
                 <small id="userError" class="form-text text-danger text-center"></small>
             </div>
 
             <div class="input-box">
-                <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                <label class="my-2 text-white px-1">Email</label>
+                <span class="icon" style="line-height: 112px;"><ion-icon name="mail-outline"></ion-icon></span>
+                <label class="my-1 text-white px-1">Email</label>
                 <input type="Email" id="email" name="email" class="form-control rounded-pill">
                 <small id="emailError" class="form-text text-danger text-center"></small>
             </div>
 
             <div class="input-box">
-                <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                <label class="my-2 text-white px-1">Password</label>
+                <span class="icon" style="line-height: 112px;"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                <label class="my-1 text-white px-1">Password</label>
                 <input type="password" id="password" name="password" class="form-control rounded-pill">
                 <small id="passwordError" class="form-text text-danger text-center"></small>
             </div>
 
-            <div class="d-flex justify-content-center my-3">
+            <div class="d-flex justify-content-center my-2">
                 <button type="submit" id="registerButton" class="btn btn-primary btn-block rounded-pill">Register</button>
             </div>
 
