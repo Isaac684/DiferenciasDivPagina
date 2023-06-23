@@ -8,8 +8,10 @@
     <div class="p-4">
 
         <h2 class="text-white text-center mb-1">Registration</h2>
+
         <form method="POST" action="{% url 'registerUser' %}" id="registerForm">
             {% csrf_token %}
+            
             <div class="input-box">
                 <span class="icon" style="line-height: 112px;"><ion-icon name="person-circle-outline"></ion-icon></span>
                 <label class="my-1 text-white px-1">Full Name</label>

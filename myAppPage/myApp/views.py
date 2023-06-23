@@ -43,4 +43,24 @@ def loginUser(request):
 
     return render(request, 'loginapp.html')
 
-    
+def changePassword(request):
+    if request.method == 'POST':
+        username = request.POST.get('userRecover')
+        password = request.POST.get('passwordRecover')
+        confirm_password = request.POST.get('confirmPassword')
+
+        usuarios_list = usuarios.objects.filter(usuario=username)
+
+        if usuarios_list.exists():
+            if password == confirm_password:
+                # Actualizar la contraseña del usuario
+                usuario = usuarios_list.first()
+                usuario.contraseña = password
+                usuario.save()
+                messages.success(request, 'Contraseña actualizada correctamente.')
+            else:
+                messages.error(request, 'Las contraseñas no coinciden.')
+        else:
+            messages.error(request, 'Usuario incorrecto!!!')
+
+    return render(request, 'recoverpassword.html')
