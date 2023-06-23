@@ -2,9 +2,32 @@
 
 {% block content %}
 
-<div class="container text-center">
-    <h2 class="font-weight-bold text-white">Bienvenidos a la pagina</h2>
-    <p class="font-weight-bold text-white">Explora nuestro contenido</p>
+<div class="container-fluid pt-3 pb-3" style="background-color: white;">
+    <form class="container-fluid rounded-4 border border-1 pb-3" style="width: max-content;">
+        <div class="mt-3 input-group mb-3">
+            <input type="text" class="form-control" placeholder="Ingrese la cantidad de puntos"
+                aria-label="Example text with button addon" aria-describedby="button-addon1">
+            <button class="btn btn-primary" type="button" id="button-addon1">Aceptar</button>
+        </div>
+        <label class="form-label">Ingrese el valor para el punto</label>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" disabled placeholder="Valor de x">
+            <input type="text" class="form-control" disabled placeholder="Valor de y">
+        </div>
+        <div class="form-check mb-2">
+            <input class="form-check-input" disabled type="checkbox" value="" id="pasoApaso">
+            <label class="form-check-label" for="pasoApaso">
+                Ver paso a paso
+            </label>
+        </div>
+        <div class="form-check mb-3">
+            <input class="form-check-input" disabled type="checkbox" value="" id="verificarRespuesta">
+            <label class="form-check-label" for="verificarRespuesta">
+                Verificar respuesta
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 
 {% endblock %}

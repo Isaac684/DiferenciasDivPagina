@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="{% static 'css/styleapp.css' %}">
 </head>
 
-<body class="d-flex justify-content-center align-items-center" style="min-height: calc(100vh + 70px); background-color: #848478">
+<body class="d-flex justify-content-center align-items-center" style="margin-top: 125px; background-color: #848478">
 
-    <header class="fixed-top" style="background-color: #aaaa91">
+    <header class="fixed-top" style="background-color: #FFFFFF">
 
         <div class="container-fluid d-flex justify-content-between align-items-center mx-4 p-3 py-4">
             <h2 class="logo text-dark">Logo</h2>
@@ -27,7 +27,7 @@
 
     </header>
 
-    <main>
+    <main class="container-fluid d-flex align-self-center">
         {% block content %}
         {% endblock %}
     </main>

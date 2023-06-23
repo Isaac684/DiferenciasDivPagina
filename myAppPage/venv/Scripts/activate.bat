@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\luis3\Documents\repository\myApp-djangoproject\DiferenciasDivPagina\myAppPage\venv
+set VIRTUAL_ENV=C:\Users\Isaac\DiferenciasDivPagina\myAppPage\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
