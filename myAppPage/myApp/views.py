@@ -7,6 +7,7 @@ def homepage(request):
     return render(request, 'homepageapp.html')
 
 def login(request):
+    #del request.session['usuario']
     return render(request, 'loginapp.html')
 
 def signup(request):
@@ -29,6 +30,7 @@ def registerUser(request):
         return render(request, "signupapp.html")
 
 def loginUser(request):
+        
     if request.method == 'POST':
         username = request.POST.get('userLogin')
         password = request.POST.get('userPassword')
