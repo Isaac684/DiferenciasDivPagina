@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container-fluid pt-3 pb-3">
-    <form class="rounded-4 border border-1 m-5 p-5" style="background-color: #9094af;">
+    <form class="rounded-2 border border-1 m-5 p-5" style="background-color: #9094af;">
         <h4 class="mb-4 text-center">Metodo de diferencias divididas</h4>
         <div class="input-group mb-3">
             <input type="text" id="cantidad-puntos" class="form-control" placeholder="Ingrese la cantidad de puntos" aria-describedby="button-aceptar">
@@ -16,18 +16,37 @@
                 <input type="text" class="form-control" disabled placeholder="Valor de y">
             </div>
         </div>
+        {% if request.session.usuario %}
         <div class="form-check mb-2">
-            <input class="form-check-input" disabled type="checkbox" value="" id="pasoApaso">
+            <input class="form-check-input" type="checkbox" value="" id="pasoApaso">
             <label class="form-check-label" for="pasoApaso">
                 Ver paso a paso
             </label>
         </div>
         <div class="form-check mb-3">
-            <input class="form-check-input" disabled type="checkbox" value="" id="verificarRespuesta">
+            <input class="form-check-input" type="checkbox" value="" id="verificarRespuesta">
             <label class="form-check-label" for="verificarRespuesta">
                 Verificar respuesta
             </label>
         </div>
+        {% else %}
+        <div class="form-check mb-2">
+            <input class="form-check-input"  disabled type="checkbox" id="pasoApaso">
+            <label class="form-check-label" for="pasoApaso">
+                Ver paso a paso
+            </label>
+            <br>
+            <span class="text-warning">Valido solo para usuarios registrados</span>
+        </div>
+        <div class="form-check mb-3">
+            <input class="form-check-input" disabled type="checkbox" id="verificarRespuesta">
+            <label class="form-check-label" for="verificarRespuesta">
+                Verificar respuesta
+            </label>
+            <br>
+            <span class="text-warning">Valido solo para usuarios registrados</span>
+        </div>
+        {% endif %}
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

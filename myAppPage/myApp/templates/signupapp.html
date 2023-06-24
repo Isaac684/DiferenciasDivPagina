@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="container-fluid border border-white-50 rounded" style="width: 400px; height: 535px; backdrop-filter: blur(20px); box-shadow: 0 0 30px rgba(0, 0, 0, .5); background-color: #2e2e2e">
+<div class="container-fluid border border-white-50 rounded" style="width: 400px; height: 560px; backdrop-filter: blur(20px); box-shadow: 0 0 30px rgba(0, 0, 0, .5); background-color: #2e2e2e">
     <div class="p-4">
 
         <h2 class="text-white text-center mb-1">Registration</h2>
@@ -13,14 +13,14 @@
             {% csrf_token %}
             
             <div class="input-box">
-                <span class="icon pr-4" style="line-height: 108px;"><ion-icon name="person-circle-outline"></ion-icon></span>
+                <span class="icon me-3" style="line-height: 108px;"><ion-icon name="person-circle-outline"></ion-icon></span>
                 <label class="my-1 text-white px-1">Full Name</label>
                 <input type="text" id="fullName" name="fullName" class="form-control rounded-pill">
                 <small id="fullNameError" class="form-text text-danger text-center">{{ fullNameError }}</small>
             </div>
 
             <div class="input-box">
-                <span class="icon pr-4" style="line-height: 108px;"><ion-icon name="person-circle-outline"></ion-icon></span>
+                <span class="icon me-3" style="line-height: 108px;"><ion-icon name="person-circle-outline"></ion-icon></span>
                 <label class="my-1 text-white px-1">User</label>
                 <input type="text" id="user" name="user" class="form-control rounded-pill">
                 {% if userError %}
@@ -30,7 +30,7 @@
             </div>
 
             <div class="input-box">
-                <span class="icon pr-4" style="line-height: 108px;"><ion-icon name="mail-outline"></ion-icon></span>
+                <span class="icon me-3" style="line-height: 108px;"><ion-icon name="mail-outline"></ion-icon></span>
                 <label class="my-1 text-white px-1">Email</label>
                 <input type="Email" id="email" name="email" class="form-control rounded-pill">
                 {% if emailError %}
@@ -40,7 +40,7 @@
             </div>
 
             <div class="input-box">
-                <span class="icon pr-4" style="line-height: 108px;"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                <span class="icon me-3" style="line-height: 108px;"><ion-icon name="lock-closed-outline"></ion-icon></span>
                 <label class="my-1 text-white px-1">Password</label>
                 <input type="password" id="password" name="password" class="form-control rounded-pill">
                 {% if passwordError %}
