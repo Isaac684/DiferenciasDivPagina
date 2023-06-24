@@ -54,10 +54,12 @@ buttonAceptar.addEventListener('click',function () {
             ingresarXY.innerHTML= ''
             for (let i = 0; i < cantPuntos; i++) {
                 ingresarXY.innerHTML += `
-                <label class="form-label">Ingrese el valor para el punto ${i+1}:</label>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control valorX" placeholder="Valor de x${i+1}">
-                    <input type="text" class="form-control valorY" placeholder="Valor de y${i+1}">
+                <div class="col-md-5 col-lg-5 ">
+                    <label class="form-label">Ingrese el valor para el punto ${i+1}:</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control valorX" placeholder="Valor X${i+1}">
+                        <input type="text" class="form-control valorY" placeholder="Valor Y${i+1}">
+                    </div>
                 </div>`
             }
         }
