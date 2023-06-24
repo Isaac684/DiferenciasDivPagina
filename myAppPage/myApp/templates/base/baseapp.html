@@ -18,9 +18,12 @@
 
         <div class=" container-fluid d-flex justify-content-between align-items-center">
             {% if is_guest %}
-            <nav class="container-nav mx-auto">
                 <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="" style="height: 90px;">
-            </nav>
+                <nav class="container-nav d-flex mx-4">
+                    <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="/loginapp">Login</a></button>
+                    <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="/signupapp">Sign up</a></button>
+                    <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">Contact</a></button>
+                </nav>
             {% else %}
                 <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="" style="height: 90px;">
                 <nav class="container-nav d-flex mx-4">
