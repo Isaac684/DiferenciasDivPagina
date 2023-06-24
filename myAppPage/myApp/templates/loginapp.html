@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="container-fluid border border-white-50 rounded" style="width: 400px; height: 440px; backdrop-filter: blur(20px); box-shadow: 0 0 30px rgba(0, 0, 0, .5); background-color: #5e5e5e">
+<div class="container-fluid border border-white-50 rounded" style="width: 400px; height: 440px; backdrop-filter: blur(20px); box-shadow: 0 0 30px rgba(0, 0, 0, .5); background-color: #2c2c2c">
     <div class="p-4">
 
         <h2 class="text-white text-center">Login</h2>
@@ -53,7 +53,7 @@
             </div>
 
             <div class="text-center">
-                <a href="#" class="text-dark">Enter as guest</a>
+                <a href="{% url 'guestPage' %}" class="text-success">Enter as guest</a>
             </div>
 
             <div class="text-center my-2">

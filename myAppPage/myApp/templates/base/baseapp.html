@@ -11,23 +11,45 @@
     <link rel="stylesheet" href="{% static 'css/styleapp.css' %}">
 </head>
 
-<body class="d-flex justify-content-center align-items-center" style="margin-top: 150px; background-color: #848478">
+<body class="d-flex justify-content-center align-items-center" style="margin-top: 160px; background-color: #e1ecf7">
 
-    <header class="fixed-top border-bottom border-dark" style="background-color: #aaaa91;">
+    <header class="fixed-top border-bottom border-dark" style="background-color: #1bad6b;">
 
         <div class=" container-fluid d-flex justify-content-between align-items-center">
-            <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="" style="height: 90px;">
+            {% if is_guest %}
+            <nav class="container-nav mx-auto">
+                <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="" style="height: 90px;">
+            </nav>
+            {% else %}
+                <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="" style="height: 90px;">
+                <nav class="container-nav d-flex mx-4">
+                    {% if request.session.usuario %}
+                        <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">User profile</a></button>
+                        <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">{{ request.session.usuario }}</a></button>
+                        <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="/logout">Sign off</a></button>
+                    {% else %}
+                        <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="/loginapp">Login</a></button>
+                        <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="/signupapp">Sign up</a></button>
+                        <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">Contact</a></button>
+                    {% endif %}
+                </nav>
+            {% endif %}
+            <!-- <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="" style="height: 90px;">
 
             <nav class="container-nav d-flex mx-4">
                 {% if request.session.usuario %}
+                <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">User profile</a></button>
                 <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">{{request.session.usuario}}</a></button>
-                <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">Contact</a></button>
+                <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="/logout">Sign off</a></button>
+                {% elif is_guest  %}
+                <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">Option A</a></button>
+                <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">Option B</a></button>
                 {% else %}
                 <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="/loginapp">Login</a></button>
                 <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="/signupapp">Sign up</a></button>
                 <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">Contact</a></button>
                 {% endif %}
-            </nav>
+            </nav> -->
         </div>
 
     </header>

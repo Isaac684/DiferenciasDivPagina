@@ -11,6 +11,17 @@ def login(request):
     #del request.session['usuario']
     return render(request, 'loginapp.html')
 
+def logout(request):
+    # Eliminar los datos de la sesión
+    del request.session['usuario']
+
+    # Redirigir a la página principal
+    return redirect('/loginapp')
+
+def guest_page(request):
+    is_guest = True
+    return render(request, 'homepageapp.html', {'is_guest': is_guest})
+
 def signup(request):
     return render(request, 'signupapp.html')
 
