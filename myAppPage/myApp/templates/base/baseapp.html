@@ -25,8 +25,8 @@
                 <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="" style="height: 90px;">
                 <nav class="container-nav d-flex mx-4">
                     {% if request.session.usuario %}
-                        <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">User profile</a></button>
-                        <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">{{ request.session.usuario }}</a></button>
+                        <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="/userProfile">User profile</a></button>
+                        <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">{{ request.session.usuario.usuario }}</a></button>
                         <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="/logout">Sign off</a></button>
                     {% else %}
                         <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="/loginapp">Login</a></button>
@@ -35,22 +35,6 @@
                     {% endif %}
                 </nav>
             {% endif %}
-            <!-- <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="" style="height: 90px;">
-
-            <nav class="container-nav d-flex mx-4">
-                {% if request.session.usuario %}
-                <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">User profile</a></button>
-                <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">{{request.session.usuario}}</a></button>
-                <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="/logout">Sign off</a></button>
-                {% elif is_guest  %}
-                <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">Option A</a></button>
-                <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">Option B</a></button>
-                {% else %}
-                <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="/loginapp">Login</a></button>
-                <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="/signupapp">Sign up</a></button>
-                <button class="border-0 bg-transparent"><a class="nav-link text-dark mx-3" href="#">Contact</a></button>
-                {% endif %}
-            </nav> -->
         </div>
 
     </header>

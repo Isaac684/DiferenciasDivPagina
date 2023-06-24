@@ -1,0 +1,48 @@
+{% extends 'base/baseapp.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container-fluid mt-4" style="background-color: #9fb8b5; width: 60%; height: 400px;">
+
+    <h4 class="text-center text-primary">Editar perfil</h4>
+    <form method="POST" action="{% url 'saveEditedProfile' %}">
+        {% csrf_token %}
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-box mb-4">
+                    <span class="icon pr-4" style="line-height: 108px; right: 2px;"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    <label class="my-1 text-white px-1">Full Name</label>
+                    <input type="text" id="fullNameEdit" name="fullNameEdit" class="form-control rounded-pill" value="{{ request.session.usuario.nombreCompleto }}">
+                </div>
+                <div class="input-box mb-4">
+                    <span class="icon pr-4" style="line-height: 108px; right: 2px;"><ion-icon name="mail-outline"></ion-icon></span>
+                    <label class="my-1 text-white px-1">Email</label>
+                    <input type="Email" id="emailEdit" name="emailEdit" class="form-control rounded-pill" value="{{ request.session.usuario.correo }}">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-box mb-4">
+                    <span class="icon pr-4" style="line-height: 108px; right: 2px;"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    <label class="my-1 text-white px-1">User</label>
+                    <input type="text" id="userEdit" name="userEdit" class="form-control rounded-pill" value="{{ request.session.usuario.usuario }}">
+                </div>
+                <div class="input-box mb-4">
+                    <span class="icon pr-4" style="line-height: 108px; right: 2px;"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <label class="my-1 text-white px-1">Password</label>
+                    <input type="text" id="passwordEdit" name="passwordEdit" class="form-control rounded-pill" value="{{ request.session.usuario.contraseña }}">
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button class="btn btn-danger"><a href="/userProfile" class="text-light" style="text-decoration: none;">Cancelar</a></button>
+        </div>
+    </form>
+</div>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons"></script>
+{% endblock %}

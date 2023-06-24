@@ -12,4 +12,7 @@ urlpatterns = [
     path('changePassword', views.changePassword, name='changePassword'),
     path('logout', views.logout, name='logout'),
     path('guestpage', views.guest_page, name='guestPage'),
+    path('userProfile', views.userProfile, name='userProfile'),
+    path('editProfile', views.editProfile, name='editProfile'),
+    path('saveEditedProfile', views.saveEditedProfile, name='saveEditedProfile'),
 ]

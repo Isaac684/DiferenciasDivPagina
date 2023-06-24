@@ -1,0 +1,47 @@
+{% extends 'base/baseapp.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container-fluid mt-4" style="background-color: #9fb8b5; width: 60%; height: 450px;">
+
+    <h4 class="text-center text-primary">Información del usuario</h4>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <img src="{% static 'img/userlogo.png' %}" class="img-fluid rounded-circle mb-1" alt="" style="height: 90px;">
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th class="text-center text-danger" style="width: 30%;">Campo</th>
+                <th class="text-center text-danger" style="width: 30%;">Valor</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td class="text-center">Nombre completo</td>
+                <td class="text-center">{{ request.session.usuario.nombreCompleto }}</td>
+            </tr>
+
+            <tr>
+                <td class="text-center">Usuario</td>
+                <td class="text-center">{{ request.session.usuario.usuario }}</td>
+            </tr>
+
+            <tr>
+                <td class="text-center">Correo electrónico</td>
+                <td class="text-center">{{ request.session.usuario.correo }}</td>
+            </tr>
+
+            <tr>
+                <td class="text-center">Contraseña</td>
+                <td class="text-center">{{ request.session.usuario.contraseña }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        <button class="btn btn-primary"><a href="/editProfile" class="text-light" style="text-decoration: none;">Editar</a></button>
+    </div>
+</div>
+{% endblock %}

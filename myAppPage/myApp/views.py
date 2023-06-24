@@ -28,6 +28,12 @@ def signup(request):
 def recover(request):
     return render(request, 'recoverpassword.html')
 
+def userProfile(request):
+    return render(request, 'userProfile.html')
+
+def editProfile(request):
+    return render(request,'editprofile.html')
+
 def registerUser(request):
     if request.method == 'POST':
         fullName = request.POST.get('fullName')
@@ -103,7 +109,6 @@ def registerUser(request):
         return render(request, "signupapp.html")
 
 def loginUser(request):
-        
     if request.method == 'POST':
         username = request.POST.get('userLogin')
         password = request.POST.get('userPassword')
@@ -111,7 +116,14 @@ def loginUser(request):
         usuarios_list = usuarios.objects.filter(usuario=username, contraseña=password)
 
         if usuarios_list.exists():
-            request.session['usuario'] = usuarios_list[0].usuario
+            usuario = usuarios_list[0]
+            request.session['usuario'] = {
+                'nombreCompleto': usuario.nombreCompleto,
+                'usuario': usuario.usuario,
+                'correo': usuario.correo,
+                'contraseña': usuario.contraseña
+            }
+            # request.session['usuario'] = usuarios_list[0].usuario
             return redirect('/homepage')
         else:
             messages.success(request, 'Usuario o contraseña incorrectos!!!')
@@ -141,3 +153,39 @@ def changePassword(request):
             messages.error(request, 'Usuario incorrecto!!!')
 
     return render(request, 'recoverpassword.html')
+
+def saveEditedProfile(request):
+    if request.method == 'POST':
+        fullNameEdit = request.POST.get('fullNameEdit')
+        emailEdit = request.POST.get('emailEdit')
+        userEdit = request.POST.get('userEdit')
+        passwordEdit = request.POST.get('passwordEdit')
+
+        try:
+            usuarioActual = request.session.get('usuario')
+            usuarioEditado = usuarios.objects.get(usuario=usuarioActual['usuario'])
+
+            # Verificar si el nuevo nombre de usuario ya existe en la base de datos
+            if usuarios.objects.filter(usuario=userEdit).exists() and userEdit != usuarioActual['usuario']:
+                # El nuevo nombre de usuario ya existe, mostrar un mensaje de error o realizar alguna acción adicional
+                pass
+            else:
+                usuarioEditado.nombreCompleto = fullNameEdit
+                usuarioEditado.usuario = userEdit
+                usuarioEditado.correo = emailEdit
+                usuarioEditado.contraseña = passwordEdit
+                usuarioEditado.save()
+
+                # Actualizar el campo de usuario en la sesión
+                usuarioActual['nombreCompleto'] = fullNameEdit
+                usuarioActual['usuario'] = userEdit
+                usuarioActual['correo'] = emailEdit
+                usuarioActual['contraseña'] = passwordEdit
+                request.session['usuario'] = usuarioActual
+        except:
+            # Manejar el caso en que el usuario no existe en la base de datos
+            pass
+
+        return redirect('userProfile')
+    else:
+        return render(request, 'editProfile.html')
