@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sym
-import pandas as pd
+# import pandas as pd
 
 class diferencias_divididas:
     x = []

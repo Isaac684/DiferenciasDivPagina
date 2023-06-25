@@ -64,6 +64,18 @@
     </div>
 </div>
 
+<script>
+    const rememberCheckbox = document.getElementById('remember');
+    const passwordInput = document.getElementById('userPassword');
+
+    rememberCheckbox.addEventListener('change', function() {
+        if (rememberCheckbox.checked) {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    });
+</script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons"></script>
 

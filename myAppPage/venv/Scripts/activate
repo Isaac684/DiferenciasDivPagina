@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Isaac\DiferenciasDivPagina\myAppPage\venv"
+VIRTUAL_ENV="C:\Users\luis3\Documents\repository\method-django\DiferenciasDivPagina\myAppPage\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

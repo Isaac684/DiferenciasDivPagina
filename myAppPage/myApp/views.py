@@ -41,7 +41,7 @@ def editProfile(request):
 def registerUser(request):
     if request.method == 'POST':
         fullName = request.POST.get('fullName')
-        user = request.POST.get('user')
+        user = request.POST.get('userr')
         email = request.POST.get('email')
         password = request.POST.get('password')
 
@@ -104,13 +104,17 @@ def registerUser(request):
             return redirect('/loginapp')
         else:
             return render(request, "signupapp.html", {
+                'fullName': fullName,
+                'userr': user,
+                'email': email,
+                'password': password,
                 'fullNameError': fullName_error,
                 'userError': user_error,
                 'emailError': email_error,
                 'passwordError': password_error
             })
-    else:
-        return render(request, "signupapp.html")
+    # else:
+    #     return render(request, "signupapp.html")
 
 def loginUser(request):
     if request.method == 'POST':
