@@ -161,15 +161,58 @@ def saveEditedProfile(request):
         userEdit = request.POST.get('userEdit')
         passwordEdit = request.POST.get('passwordEdit')
 
-        try:
-            usuarioActual = request.session.get('usuario')
-            usuarioEditado = usuarios.objects.get(usuario=usuarioActual['usuario'])
+        fullNameErrorEdit = None
+        userErrorEdit = None
+        emailErrorEdit = None
+        passwordErrorEdit = None
+        is_validEdit = True
 
-            # Verificar si el nuevo nombre de usuario ya existe en la base de datos
-            if usuarios.objects.filter(usuario=userEdit).exists() and userEdit != usuarioActual['usuario']:
-                # El nuevo nombre de usuario ya existe, mostrar un mensaje de error o realizar alguna acción adicional
-                pass
-            else:
+        userRegister = usuarios.objects.filter(usuario=userEdit).exists()
+        emailRegister = usuarios.objects.filter(correo=emailEdit).exists()
+        passwordRegister = usuarios.objects.filter(contraseña=passwordEdit).exists()
+
+        # Validación del campo "fullNameEdit"
+        if not re.match(r'^[A-Za-z\s]+$', fullNameEdit):
+            fullNameErrorEdit = "Solo se permiten letras y espacios en blanco."
+            is_validEdit = False
+        else:
+            fullNameErrorEdit = ""
+
+        # Validación del campo "userEdit"
+        if not re.match(r'^[a-z0-9]+$', userEdit):
+            userErrorEdit = "Solo se permiten letras minúsculas y números."
+            is_validEdit = False
+        elif userRegister:
+            userErrorEdit = "El usuario ya está registrado."
+            is_validEdit = False
+        else:
+            userErrorEdit = ""
+
+        # Validación del campo "emailEdit"
+        if not re.match(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$', emailEdit):
+            emailErrorEdit = "Dirección de correo electrónico no válida."
+            is_validEdit = False
+        elif emailRegister:
+            emailErrorEdit = "El correo ya está registrado."
+            is_validEdit = False
+        else:
+            emailErrorEdit = ""
+
+        # Validación del campo "passwordEdit"
+        if len(passwordEdit) < 8 or not re.match(r'^(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*()])[a-zA-Z0-9!@#$%^&*()]{8,}$', passwordEdit):
+            passwordErrorEdit = "La contraseña debe tener al menos 8 caracteres y contener al menos un símbolo."
+            is_validEdit = False
+        elif passwordRegister:
+            passwordErrorEdit = "La contraseña ya está registrada."
+            is_validEdit = False
+        else:
+            passwordErrorEdit = ""
+
+        if is_validEdit:
+            try:
+                usuarioActual = request.session.get('usuario')
+                usuarioEditado = usuarios.objects.get(usuario=usuarioActual['usuario'])
+
                 usuarioEditado.nombreCompleto = fullNameEdit
                 usuarioEditado.usuario = userEdit
                 usuarioEditado.correo = emailEdit
@@ -182,10 +225,19 @@ def saveEditedProfile(request):
                 usuarioActual['correo'] = emailEdit
                 usuarioActual['contraseña'] = passwordEdit
                 request.session['usuario'] = usuarioActual
-        except:
-            # Manejar el caso en que el usuario no existe en la base de datos
-            pass
 
-        return redirect('userProfile')
-    else:
-        return render(request, 'editProfile.html')
+                return redirect('/userProfile')
+            except:
+                # Manejar el caso en que el usuario no existe en la base de datos
+                pass
+        else:
+            return render(request, 'editProfile.html', {
+                'fullNameEdit': fullNameEdit,
+                'emailEdit': emailEdit,
+                'userEdit': userEdit,
+                'passwordEdit': passwordEdit,
+                'fullNameErrorEdit': fullNameErrorEdit,
+                'userErrorEdit': userErrorEdit,
+                'emailErrorEdit': emailErrorEdit,
+                'passwordErrorEdit': passwordErrorEdit,
+            })
