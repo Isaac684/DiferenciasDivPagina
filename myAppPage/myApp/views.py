@@ -225,10 +225,33 @@ def saveEditedProfile(request):
                 usuarioActual['correo'] = emailEdit
                 usuarioActual['contraseña'] = passwordEdit
                 request.session['usuario'] = usuarioActual
-        except:
-            # Manejar el caso en que el usuario no existe en la base de datos
-            pass
 
-        return redirect('userProfile')
-    else:
-        return render(request, 'editProfile.html')
+                return redirect('/userProfile')
+            except:
+                # Manejar el caso en que el usuario no existe en la base de datos
+                pass
+        else:
+            return render(request, 'editProfile.html', {
+                'fullNameEdit': fullNameEdit,
+                'emailEdit': emailEdit,
+                'userEdit': userEdit,
+                'passwordEdit': passwordEdit,
+                'fullNameErrorEdit': fullNameErrorEdit,
+                'userErrorEdit': userErrorEdit,
+                'emailErrorEdit': emailErrorEdit,
+                'passwordErrorEdit': passwordErrorEdit,
+            })
+    
+def realizarEjercicio(request):
+    if request.method == 'POST':
+        #verificarRespuesta = request.POST.get('verificarRespuesta')
+        #pasoApaso = request.POST.get('pasoApaso')
+        valoresX = request.POST.getlist('valorX')
+        valoresY = request.POST.getlist('valorY')
+        enterosX = list(map(float, valoresX))
+        enterosY = list(map(float, valoresY))
+        mtdd = diferencias_divididas()
+        mtdd.insercion_datos(enterosX,enterosY)
+        mtdd.mostrar_resultados()
+        #mtdd.mostrar_grafica()
+    return render(request, 'homepageapp.html')
