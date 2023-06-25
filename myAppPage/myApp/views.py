@@ -3,8 +3,9 @@ from .models import usuarios
 from django.contrib import messages
 import re
 import io
-from io import BytesIO
+
 import base64
+import numpy as np
 from .diferenciasDivididas import diferencias_divididas
 # Create your views here.
 def homepage(request):
@@ -247,6 +248,7 @@ def saveEditedProfile(request):
     
 def realizarEjercicio(request):
     if request.method == 'POST':
+        image64 = None
         #verificarRespuesta = request.POST.get('verificarRespuesta')
         #pasoApaso = request.POST.get('pasoApaso')
         valoresX = request.POST.getlist('valorX')
@@ -255,8 +257,13 @@ def realizarEjercicio(request):
         enterosY = list(map(float, valoresY))
         mtdd = diferencias_divididas()
         mtdd.insercion_datos(enterosX,enterosY)
-        mtdd.mostrar_resultados()
+
+        tabla = mtdd.mostrar_resultados()
+
+        tablaRedondeada = np.round(tabla, decimals=4)
+        
         plt = mtdd.mostrar_grafica()
+
 
         #Creamos el archivo
         buffer = io.BytesIO()
@@ -264,6 +271,8 @@ def realizarEjercicio(request):
         buffer.seek(0)
         #codificamos la imagen
         image64 = base64.b64encode(buffer.getvalue()).decode()
+        
         return render(request, 'homepageapp.html',{
-        'iamgenG':image64
+        'iamgenG':image64,
+        'tabla': tablaRedondeada
     })

@@ -100,6 +100,15 @@
         {% endif %}
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <img src="data:image/png;base64,{{ iamgenG }}" alt="Imagen grafica"> 
+    <img src="data:image/png;base64,{{ iamgenG }}" alt="Imagen grafica">
+    <table>
+        {% for fila in tabla %}
+        <tr>
+          {% for elemento in fila %}
+          <td>{{ elemento }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
 </div>
 {% endblock %}

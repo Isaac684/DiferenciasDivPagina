@@ -84,7 +84,7 @@ class diferencias_divididas:
         print()
         print('polinomio simplificado: ')
         print(self.polisimple)
-
+        return self.tabla
     def mostrar_resultados(self):
         self.titulo_tabla = ['i', 'x', 'fx']
         cantidad_x = len(self.x)
@@ -135,7 +135,8 @@ class diferencias_divididas:
 
         self.dDividida = self.tabla[0, 3:]
 
-        self.calcular_polinomio()
+        tabla = self.calcular_polinomio()
+        return tabla
         # if (mostrarpasos == False):
         #     rsp = input('Desea verificar la respuesta?\nEscriba "S" o "s" para SI, sino presione enter:\n ')
         #     if (rsp=='S' or rsp=='s'):
@@ -155,6 +156,7 @@ class diferencias_divididas:
         pfi = self.px(pxi)
 
         # Gráfica
+        plt.close()
         plt.plot(self.x, self.fx, 'o', label='Puntos')
         plt.plot(pxi, pfi, label='Polinomio')
         plt.legend()
