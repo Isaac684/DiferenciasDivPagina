@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from .models import usuarios
 from django.contrib import messages
 import re
+import io
+from io import BytesIO
+import base64
 from .diferenciasDivididas import diferencias_divididas
 # Create your views here.
 def homepage(request):
@@ -253,5 +256,14 @@ def realizarEjercicio(request):
         mtdd = diferencias_divididas()
         mtdd.insercion_datos(enterosX,enterosY)
         mtdd.mostrar_resultados()
-        #mtdd.mostrar_grafica()
-    return render(request, 'homepageapp.html')
+        plt = mtdd.mostrar_grafica()
+
+        #Creamos el archivo
+        buffer = io.BytesIO()
+        plt.savefig(buffer, format='png')
+        buffer.seek(0)
+        #codificamos la imagen
+        image64 = base64.b64encode(buffer.getvalue()).decode()
+        return render(request, 'homepageapp.html',{
+        'iamgenG':image64
+    })

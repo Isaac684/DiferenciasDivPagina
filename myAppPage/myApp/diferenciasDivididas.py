@@ -161,4 +161,4 @@ class diferencias_divididas:
         plt.xlabel('xi')
         plt.ylabel('fi')
         plt.title('Diferencias Divididas - Newton')
-        # plt.show()
+        return plt
