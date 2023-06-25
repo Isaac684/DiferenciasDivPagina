@@ -15,4 +15,5 @@ urlpatterns = [
     path('userProfile', views.userProfile, name='userProfile'),
     path('editProfile', views.editProfile, name='editProfile'),
     path('saveEditedProfile', views.saveEditedProfile, name='saveEditedProfile'),
+    path('realizarEjercicio',views.realizarEjercicio, name='realizarEjercicio'),
 ]

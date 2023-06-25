@@ -3,7 +3,9 @@
 {% block content %}
 
 <div class="container-fluid pt-3 pb-3">
-    <form class="rounded-2 border border-1 m-5 p-5" style="background-color: #9094af;">
+    <form method="POST" action="{% url 'realizarEjercicio' %}" class="rounded-2 border border-1 m-5 p-5" style="background-color: #9094af;">
+        {% csrf_token %}
+        
         <h4 class="mb-4 text-center">Metodo de diferencias divididas</h4>
         <div class="input-group mb-3">
             <input type="text" id="cantidad-puntos" class="form-control" placeholder="Ingrese la cantidad de puntos" aria-describedby="button-aceptar">
@@ -52,5 +54,4 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-
 {% endblock %}

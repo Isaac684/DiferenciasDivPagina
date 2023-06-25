@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import usuarios
 from django.contrib import messages
 import re
-
+from .diferenciasDivididas import diferencias_divididas
 # Create your views here.
 def homepage(request):
     return render(request, 'homepageapp.html')
@@ -189,3 +189,21 @@ def saveEditedProfile(request):
         return redirect('userProfile')
     else:
         return render(request, 'editProfile.html')
+    
+def realizarEjercicio(request):
+    if request.method == 'POST':
+        #verificarRespuesta = request.POST.get('verificarRespuesta')
+        #pasoApaso = request.POST.get('pasoApaso')
+        valoresX = request.POST.getlist('valorX')
+        valoresY = request.POST.getlist('valorY')
+
+        enterosX = list(map(float, valoresX))
+        enterosY = list(map(float, valoresY))
+
+        mtdd = diferencias_divididas()
+
+        mtdd.insercion_datos(enterosX,enterosY)
+        mtdd.mostrar_resultados()
+        #mtdd.mostrar_grafica()
+    return render(request, 'homepageapp.html')
+
