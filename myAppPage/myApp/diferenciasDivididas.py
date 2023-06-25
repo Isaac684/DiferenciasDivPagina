@@ -8,45 +8,7 @@ class diferencias_divididas:
     fx = []
     px = None
 
-    def insercion_datos(self, valoresx, valoresy):
-        # def verificandoPuntos(arreglo, posicion, datoIngresado, puntos, iterador):
-        #     while(True):
-        #         if(len(puntos)==2):
-        #             try:
-        #                 arreglo.append(int(puntos[posicion])) 
-        #                 break
-        #             except Exception:
-        #                 try:
-        #                     arreglo.append(float(puntos[posicion])) 
-        #                     break
-        #                 except Exception:
-        #                     puntos[posicion] = input(f'Ingrese un numero en el valor de {datoIngresado} en el punto {iterador+1}:\n')
-        #                     continue
-
-        # cantidadPuntos = input('Ingrese la cantidad de puntos a graficar:\n')
-        # while(type(cantidadPuntos) != int):
-        #     try:
-        #         cantidadPuntos = int(cantidadPuntos)
-        #         if(cantidadPuntos <= 0 or cantidadPuntos == 1):
-        #             cantidadPuntos = input('Ingrese solo números positivos y mayores que uno:\n')
-
-        #     except Exception:
-        #         cantidadPuntos = input('Ingrese un numero para los puntos:\n')
-
-        # for i in range(cantidadPuntos):
-        #     puntos = input(f'Ingrese el punto {i+1} en formato x,y\n')
-        #     while(True):
-        #         if puntos.count(',') == 1:
-        #             puntos = puntos.replace(" ",'')
-        #             puntos = puntos.split(',',1)
-        #             #comprobando dato int o float
-        #             verificandoPuntos(valoresx,0,'x',puntos,i)
-        #             verificandoPuntos(valoresy,1,'y',puntos,i)
-        #             break
-        #         else:
-        #             puntos = input(f'\nIngrese el punto {i+1} en el formato adecuado x,y donde cada dato este separado por una ","\n')
-        #         continue
-        
+    def insercion_datos(self, valoresx, valoresy):  
         self.x = np.array(valoresx)
         self.fx = np.array(valoresy)
 
@@ -84,14 +46,11 @@ class diferencias_divididas:
         print()
         print('polinomio simplificado: ')
         print(self.polisimple)
-        return self.tabla
+        return  self.titulo_tabla, self.tabla, self.dDividida,polinomio,self.polisimple
+    
     def mostrar_resultados(self):
         self.titulo_tabla = ['i', 'x', 'fx']
         cantidad_x = len(self.x)
-
-        if cantidad_x == 0 or len(self.fx) == 0:
-            print('Los arreglos de puntos ingresados están vacíos.')
-            return False
 
         item = np.arange(0, cantidad_x, 1)
         self.tabla = np.concatenate(([item], [self.x], [self.fx]), axis=0)
@@ -135,8 +94,8 @@ class diferencias_divididas:
 
         self.dDividida = self.tabla[0, 3:]
 
-        tabla = self.calcular_polinomio()
-        return tabla
+        datos = self.calcular_polinomio()
+        return datos
         # if (mostrarpasos == False):
         #     rsp = input('Desea verificar la respuesta?\nEscriba "S" o "s" para SI, sino presione enter:\n ')
         #     if (rsp=='S' or rsp=='s'):

@@ -101,7 +101,28 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <img src="data:image/png;base64,{{ iamgenG }}" alt="Imagen grafica">
+    
+    <h1>Tabla Diferencia Dividida</h1>
     <table>
+        <thead>
+            <tr>
+                {% for nombre_columna in nombres_columnas %}
+                    <th>{{ nombre_columna }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for fila in tabla %}
+                <tr>
+                    {% for valor in fila %}
+                        <td>{{ valor }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- <table>
         {% for fila in tabla %}
         <tr>
           {% for elemento in fila %}
@@ -109,6 +130,6 @@
           {% endfor %}
         </tr>
         {% endfor %}
-      </table>
+      </table> -->
 </div>
 {% endblock %}

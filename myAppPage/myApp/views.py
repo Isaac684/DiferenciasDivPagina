@@ -255,12 +255,14 @@ def realizarEjercicio(request):
         valoresY = request.POST.getlist('valorY')
         enterosX = list(map(float, valoresX))
         enterosY = list(map(float, valoresY))
+        print(enterosX)
+        print(enterosY)
         mtdd = diferencias_divididas()
         mtdd.insercion_datos(enterosX,enterosY)
 
-        tabla = mtdd.mostrar_resultados()
-
-        tablaRedondeada = np.round(tabla, decimals=4)
+        arrayDatos = mtdd.mostrar_resultados()
+        nombres_columnas = arrayDatos[0]
+        tablaRedondeada = np.round(arrayDatos[1], decimals=4)
         
         plt = mtdd.mostrar_grafica()
 
@@ -274,5 +276,6 @@ def realizarEjercicio(request):
         
         return render(request, 'homepageapp.html',{
         'iamgenG':image64,
-        'tabla': tablaRedondeada
+        'tabla': tablaRedondeada,
+        'nombres_columnas': nombres_columnas
     })
