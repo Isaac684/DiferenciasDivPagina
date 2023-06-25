@@ -14,24 +14,36 @@
                 <div class="input-box mb-4">
                     <span class="icon pr-4" style="line-height: 108px; right: 2px;"><ion-icon name="person-circle-outline"></ion-icon></span>
                     <label class="my-1 text-white px-1">Full Name</label>
-                    <input type="text" id="fullNameEdit" name="fullNameEdit" class="form-control rounded-pill" value="{{ request.session.usuario.nombreCompleto }}">
+                    <input type="text" id="fullNameEdit" name="fullNameEdit" class="form-control rounded-pill" value="{{ fullNameEdit|default:'' }}">
+                    <small id="fullNameErrorEdit" class="form-text text-danger text-center">{{ fullNameErrorEdit }}</small>
                 </div>
+
                 <div class="input-box mb-4">
                     <span class="icon pr-4" style="line-height: 108px; right: 2px;"><ion-icon name="mail-outline"></ion-icon></span>
                     <label class="my-1 text-white px-1">Email</label>
-                    <input type="Email" id="emailEdit" name="emailEdit" class="form-control rounded-pill" value="{{ request.session.usuario.correo }}">
+                    <input type="Email" id="emailEdit" name="emailEdit" class="form-control rounded-pill" value="{{ emailEdit|default:'' }}">
+                    {% if emailErrorEdit %}
+                        <small id="emailErrorEdit" class="form-text text-danger text-center">{{ emailErrorEdit }}</small>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-box mb-4">
                     <span class="icon pr-4" style="line-height: 108px; right: 2px;"><ion-icon name="person-circle-outline"></ion-icon></span>
                     <label class="my-1 text-white px-1">User</label>
-                    <input type="text" id="userEdit" name="userEdit" class="form-control rounded-pill" value="{{ request.session.usuario.usuario }}">
+                    <input type="text" id="userEdit" name="userEdit" class="form-control rounded-pill" value="{{ userEdit|default:'' }}">
+                    {% if userErrorEdit %}
+                        <small id="userErrorEdit" class="form-text text-danger text-center">{{ userErrorEdit }}</small>
+                    {% endif %}
                 </div>
+
                 <div class="input-box mb-4">
                     <span class="icon pr-4" style="line-height: 108px; right: 2px;"><ion-icon name="lock-closed-outline"></ion-icon></span>
                     <label class="my-1 text-white px-1">Password</label>
-                    <input type="text" id="passwordEdit" name="passwordEdit" class="form-control rounded-pill" value="{{ request.session.usuario.contraseña }}">
+                    <input type="text" id="passwordEdit" name="passwordEdit" class="form-control rounded-pill" value="{{ passwordEdit|default:'' }}">
+                    {% if passwordErrorEdit %}
+                        <small id="passwordErrorEdit" class="form-text text-danger text-center">{{ passwordErrorEdit }}</small>
+                    {% endif %}
                 </div>
             </div>
         </div>
