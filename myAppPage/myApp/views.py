@@ -264,12 +264,14 @@ def realizarEjercicio(request):
         mtdd = diferencias_divididas()
         mtdd.insercion_datos(enterosX,enterosY)
 
+        # cambio
+        mtdd.mostrar_resultados()
+
         arrayDatos = mtdd.mostrar_resultados()
         nombres_columnas = arrayDatos[0]
         tablaRedondeada = np.round(arrayDatos[1], decimals=4)
         
         plt = mtdd.mostrar_grafica()
-
 
         #Creamos el archivo
         buffer = io.BytesIO()
@@ -277,9 +279,14 @@ def realizarEjercicio(request):
         buffer.seek(0)
         #codificamos la imagen
         image64 = base64.b64encode(buffer.getvalue()).decode()
+
+        titulo_tabla, tabla, dDividida, polinomio, polisimple = mtdd.calcular_polinomio()
         
-        return render(request, 'homepageapp.html',{
-        'iamgenG':image64,
-        'tabla': tablaRedondeada,
-        'nombres_columnas': nombres_columnas
-    })
+        return render(request, 'homepageapp.html', {
+            'iamgenG':image64,
+            'tabla': tablaRedondeada,
+            'nombres_columnas': nombres_columnas,
+            'dDividida': dDividida,
+            'polinomio': polinomio,
+            'polisimple': polisimple
+        })

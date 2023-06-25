@@ -46,7 +46,7 @@ class diferencias_divididas:
         print()
         print('polinomio simplificado: ')
         print(self.polisimple)
-        return  self.titulo_tabla, self.tabla, self.dDividida,polinomio,self.polisimple
+        return  self.titulo_tabla, self.tabla, self.dDividida,polinomio, self.polisimple
     
     def mostrar_resultados(self):
         self.titulo_tabla = ['i', 'x', 'fx']
