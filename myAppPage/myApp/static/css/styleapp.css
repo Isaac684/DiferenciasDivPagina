@@ -14,9 +14,9 @@
 }
 
 .hover-button:hover {
-    background-color: rgb(189, 241, 202);
+    background-color: rgb(66, 71, 67);
     color: black;
-    border-color: rgb(121, 241, 201);
+    border-color: rgb(83, 102, 96);
 }
 
 /* login */

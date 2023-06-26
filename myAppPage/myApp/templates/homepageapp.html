@@ -2,12 +2,15 @@
 
 {% block content %}
 
-<div class="pt-3 pb-3">
-    <div class="container-fluid p" style="background-color: #e1ecf7"">
-        <h1 class="fw-bolder">
+<div class="">
+    <div class="container-fluid p-4 bg-dark-subtle" style="height: 30%;">
+        <h1 class="fw-bolder pt-2">
             Calculadora de Diferencias Divididas
         </h1>
-        <p class="mt-5">¡Bienvenido a nuestra calculadora online de diferencias divididas! Aquí puedes calcular y comprender las diferencias
+        <p class="mt-4 text-justify fs-5">
+            ¡Bienvenido a nuestra calculadora online de diferencias divididas! 
+        </p>
+        <p class="mt-3 pb-3 text-justify">Aquí puedes calcular y comprender las diferencias
         divididas de una función en puntos discretos. Ingresa los puntos conocidos y obtendrás los resultados de manera rápida y
         precisa.
         
@@ -18,62 +21,35 @@
         Simplifica tus cálculos numéricos y análisis de funciones con nuestra calculadora online de diferencias divididas.
         ¡Comienza a usarla ahora mismo!
         </p>
-        <!-- <span>
-            Las diferencias divididas son una herramienta utilizada en el campo del cálculo numérico y el análisis numérico para
-            aproximar o interpolar funciones. Son una forma de representar las diferencias entre los valores de una función en
-            puntos discretos.
-        </span>
-        <br>
-        <span>
-            La idea básica detrás de las diferencias divididas es tomar una serie de puntos (x, y) que representan los valores de
-            una función en diferentes puntos x, y calcular las diferencias entre los valores de y para obtener una serie de
-            diferencias divididas. Estas diferencias divididas se utilizan luego para construir un polinomio que aproxima la función
-            original.
-        </span>
-        <br>
-        <span>
-            Las diferencias divididas se pueden calcular utilizando el método de diferencias finitas. El cálculo de las diferencias
-            divididas se realiza en etapas, comenzando con las diferencias divididas de primer orden (diferencias entre dos puntos
-            consecutivos) y luego calculando las diferencias divididas de orden superior (diferencias entre puntos más distantes).
-            El proceso continúa hasta que se obtiene una tabla de diferencias divididas que permite construir el polinomio de
-            interpolación.
-        </span>
-        <br>
-        <span>
-            Las diferencias divididas se utilizan comúnmente en la interpolación de Lagrange y en la interpolación de Newton, dos
-            métodos ampliamente utilizados para aproximar funciones. Estos métodos permiten encontrar valores aproximados de una
-            función en puntos intermedios basándose en los valores conocidos en puntos discretos.
-        </span>
-        <br>
-        <span>
-            En resumen, las diferencias divididas son una herramienta matemática utilizada para aproximar o interpolar funciones a
-            partir de puntos discretos. Ayudan a construir polinomios de interpolación que se acercan a la función original y son
-            ampliamente utilizados en el campo del análisis numérico.
-        </span> -->
     </div>
-    <div class="row text-center m-5 p-5" style="background-color: antiquewhite;">
-        <div class="col-md-4">
+    <div class="row m-0 pt-5 pb-5 ps-2 pe" >
+        <h1 class="fw-bolder mb-5" >¿Como se utiliza la calculadora?</h1>
+        <div class="text-center col-md-6 col-lg-4">
             <div class="d-flex align-items-center">
-                <div class="circle bg-danger text-white mr-3 d-flex justify-content-center align-items-center" style="width: 80px; height: 80px; border-radius: 50%;">
-                    <span class="step-number">1</span>
+                <div>
+                    <div class="circle bg-danger text-white mr-3 d-flex justify-content-center align-items-center" style="width: 80px; height: 80px; border-radius: 50%;">
+                        <span class="step-number">1</span>
+                    </div>
                 </div>
                 <div>
                     <p class="m-0">Paso 1</p>
-                    <p class="text-primary" style="text-align: justify; max-width: 200px;">
+                    <p class="text-black-50" style="text-align: justify;">
                         Puede ingresar en los campos los puntos correspondientes.
                     </p>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="text-center col-md-6 col-lg-4">
             <div class="d-flex align-items-center">
-                <div class="circle bg-danger text-white mr-3 d-flex justify-content-center align-items-center" style="width: 80px; height: 80px; border-radius: 50%;">
-                    <span class="step-number">2</span>
+                <div>
+                    <div class="circle bg-danger text-white mr-3 d-flex justify-content-center align-items-center" style="width: 80px; height: 80px; border-radius: 50%;">
+                        <span class="step-number">2</span>
+                    </div>
                 </div>
                 <div>
                     <p class="m-0">Paso 2</p>
-                    <p class="text-primary" style="text-align: justify; max-width: 200px;">
+                    <p class="text-black-50" style="text-align: justify;">
                         Tener en cuenta que el primer campo solo acepta una cantidad entre 3 a 100 puntos y los demas
                         campos se permiten cantidades enteras y decimales.
                     </p>
@@ -81,14 +57,16 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="text-center col-md-6 col-lg-4 pb-5">
             <div class="d-flex align-items-center">
-                <div class="circle bg-danger text-white mr-3 d-flex justify-content-center align-items-center" style="width: 80px; height: 80px; border-radius: 50%;">
-                    <span class="step-number">3</span>
+                <div>
+                    <div class="circle bg-danger text-white mr-3 d-flex justify-content-center align-items-center" style="width: 80px; height: 80px; border-radius: 50%;">
+                        <span class="step-number">3</span>
+                    </div>
                 </div>
                 <div>
                     <p class="m-0">Paso 3</p>
-                    <p class="text-primary" style="text-align: justify; max-width: 200px;">
+                    <p class="text-black-50" style="text-align: justify;">
                         Una vez haya ingresado todos los campos correctamente podra dar click a calcular donde se le
                         mostraran todos los resultados de acuerdo a los datos ingresados respectivamente.
                     </p>
@@ -96,94 +74,97 @@
             </div>
         </div>
     </div>
-
-    <form method="POST" action="{% url 'realizarEjercicio' %}" class="rounded-2 border border-1 m-5 p-5" style="background-color: #9094af;">
-        {% csrf_token %}
-        <h4 class="mb-4 text-center">Metodo de diferencias divididas</h4>
-        <div class="input-group mb-3">
-            <input type="text" id="cantidad-puntos" class="form-control" placeholder="Ingrese la cantidad de puntos" aria-describedby="button-aceptar">
-            <button class="btn btn-primary" type="button" id="button-aceptar">Aceptar</button>
-        </div>
-        <div class="row">
-            <div class="puntosXY row">
-                <label class="form-label">Ingrese el valor para el punto</label>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" disabled name="valorX1" placeholder="Valor de x">
-                    <input type="text" class="form-control" disabled name="valorY1" placeholder="Valor de y">
+    <div class="bg-dark-subtle pt-5 pb-5 d-flex">
+        <form method="POST" action="{% url 'realizarEjercicio' %}" class="col-6 rounded-2 border border-1 m-5 p-5">
+            {% csrf_token %}
+            <h4 class="mb-4 text-center">Metodo de diferencias divididas</h4>
+            <div class="input-group mb-3">
+                <input type="text" id="cantidad-puntos" class="form-control" placeholder="Ingrese la cantidad de puntos" aria-describedby="button-aceptar">
+                <button class="btn btn-primary" type="button" id="button-aceptar">Aceptar</button>
+            </div>
+            <div class="row">
+                <div class="puntosXY row">
+                    <label class="form-label">Ingrese el valor para el punto</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" disabled name="valorX1" placeholder="Valor de x">
+                        <input type="text" class="form-control" disabled name="valorY1" placeholder="Valor de y">
+                    </div>
                 </div>
             </div>
-        </div>
-        {% if request.session.usuario %}
-        <div class="form-check mb-2">
-            <input class="form-check-input" type="checkbox" value="" id="pasoApaso">
-            <label class="form-check-label" for="pasoApaso">
-                Ver paso a paso
-            </label>
-        </div>
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="" id="verificarRespuesta">
-            <label class="form-check-label" for="verificarRespuesta">
-                Verificar respuesta
-            </label>
-        </div>
-        {% else %}
-        <div class="form-check mb-2">
-            <input class="form-check-input"  disabled type="checkbox" id="pasoApaso">
-            <label class="form-check-label" for="pasoApaso">
-                Ver paso a paso
-            </label>
-            <br>
-            <span class="text-warning">Valido solo para usuarios registrados</span>
-        </div>
-        <div class="form-check mb-3">
-            <input class="form-check-input" disabled type="checkbox" id="verificarRespuesta">
-            <label class="form-check-label" for="verificarRespuesta">
-                Verificar respuesta
-            </label>
-            <br>
-            <span class="text-warning">Valido solo para usuarios registrados</span>
-        </div>
-        {% endif %}
-        <button type="submit" id="Enviar" class="btn btn-primary">Submit</button>
-    </form>
-    {% if request.session.usuario %}
-    <img src="data:image/png;base64,{{ iamgenG }}" alt="Imagen grafica">
-    
-    <h1>Tabla Diferencia Dividida</h1>
-    <table>
-        <thead>
-            <tr>
-                {% for nombre_columna in nombres_columnas %}
-                    <th>{{ nombre_columna }}</th>
-                {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for fila in tabla %}
-                <tr>
-                    {% for valor in fila %}
-                        <td>{{ valor }}</td>
+            {% if request.session.usuario %}
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" value="" id="pasoApaso">
+                <label class="form-check-label" for="pasoApaso">
+                    Ver paso a paso
+                </label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value="" id="verificarRespuesta">
+                <label class="form-check-label" for="verificarRespuesta">
+                    Verificar respuesta
+                </label>
+            </div>
+            {% else %}
+            <div class="form-check mb-2">
+                <input class="form-check-input"  disabled type="checkbox" id="pasoApaso">
+                <label class="form-check-label" for="pasoApaso">
+                    Ver paso a paso
+                </label>
+                <br>
+                <span class="text-warning">Valido solo para usuarios registrados</span>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" disabled type="checkbox" id="verificarRespuesta">
+                <label class="form-check-label" for="verificarRespuesta">
+                    Verificar respuesta
+                </label>
+                <br>
+                <span class="text-warning">Valido solo para usuarios registrados</span>
+            </div>
+            {% endif %}
+            <button type="submit" id="Enviar" class="btn btn-primary">Submit</button>
+        </form>
+        <div class="col">
+            {% if request.session.usuario %}
+            <img src="data:image/png;base64,{{ iamgenG }}" alt="Imagen grafica">
+            
+            <h1>Tabla Diferencia Dividida</h1>
+            <table>
+                <thead>
+                    <tr>
+                        {% for nombre_columna in nombres_columnas %}
+                            <th>{{ nombre_columna }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fila in tabla %}
+                        <tr>
+                            {% for valor in fila %}
+                                <td>{{ valor }}</td>
+                            {% endfor %}
+                        </tr>
                     {% endfor %}
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <h1>Diferencias de cada iteracion</h1>
-    <p>{{ dDividida }}</p>
-
-    <h1>Polinomio</h1>
-    <p>{{ polinomio }}</p>
-
-    <h1>Polinomio simplificado</h1>
-    <p>{{ polisimple }}</p>
-    {% else %}
-    <h1>Polinomio</h1>
-    <p>{{ polinomio }}</p>
-
-    <h1>Polinomio simplificado</h1>
-    <p>{{ polisimple }}</p>
-    {% endif %}
+                </tbody>
+            </table>
+        
+            <h1>Diferencias de cada iteracion</h1>
+            <p>{{ dDividida }}</p>
+        
+            <h1>Polinomio</h1>
+            <p>{{ polinomio }}</p>
+        
+            <h1>Polinomio simplificado</h1>
+            <p>{{ polisimple }}</p>
+            {% else %}
+            <h1>Polinomio</h1>
+            <p>{{ polinomio }}</p>
+        
+            <h1>Polinomio simplificado</h1>
+            <p>{{ polisimple }}</p>
+            {% endif %}
+        </div>
+        </div>
 
 </div>
 {% endblock %}
