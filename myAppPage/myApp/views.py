@@ -290,3 +290,4 @@ def realizarEjercicio(request):
             'polinomio': polinomio,
             'polisimple': polisimple
         })
+        return render(request, 'homepageapp.html')

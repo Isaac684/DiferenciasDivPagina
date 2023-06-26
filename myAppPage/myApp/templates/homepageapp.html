@@ -3,9 +3,11 @@
 {% block content %}
 
 <div class="container-fluid pt-3 pb-3">
-    <form method="POST" action="{% url 'realizarEjercicio' %}" class="rounded-2 border border-1 m-5 p-5" style="background-color: #9094af;">
-        {% csrf_token %}
-        
+    <div>
+        <h1 class="fw-bolder">
+            Calculadora de Diferencias Divididas
+        </h1>
+    </div>
     <div class="row text-center m-5 p-5" style="background-color: antiquewhite;">
         <div class="col-md-4">
             <div class="d-flex align-items-center">
@@ -52,7 +54,8 @@
         </div>
     </div>
 
-    <form class="rounded-2 border border-1 m-5 p-5" style="background-color: #9094af;">
+    <form method="POST" action="{% url 'realizarEjercicio' %}" class="rounded-2 border border-1 m-5 p-5" style="background-color: #9094af;">
+        {% csrf_token %}
         <h4 class="mb-4 text-center">Metodo de diferencias divididas</h4>
         <div class="input-group mb-3">
             <input type="text" id="cantidad-puntos" class="form-control" placeholder="Ingrese la cantidad de puntos" aria-describedby="button-aceptar">
@@ -62,8 +65,8 @@
             <div class="puntosXY row">
                 <label class="form-label">Ingrese el valor para el punto</label>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" disabled placeholder="Valor x">
-                    <input type="text" class="form-control" disabled placeholder="Valor y">
+                    <input type="text" class="form-control" disabled name="valorX1" placeholder="Valor de x">
+                    <input type="text" class="form-control" disabled name="valorY1" placeholder="Valor de y">
                 </div>
             </div>
         </div>
@@ -98,8 +101,9 @@
             <span class="text-warning">Valido solo para usuarios registrados</span>
         </div>
         {% endif %}
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" id="Enviar" class="btn btn-primary">Submit</button>
     </form>
+    {% if request.session.usuario %}
     <img src="data:image/png;base64,{{ iamgenG }}" alt="Imagen grafica">
     
     <h1>Tabla Diferencia Dividida</h1>
@@ -122,7 +126,7 @@
         </tbody>
     </table>
 
-    <h1>dDividida</h1>
+    <h1>Diferencias de cada iteracion</h1>
     <p>{{ dDividida }}</p>
 
     <h1>Polinomio</h1>
@@ -130,14 +134,13 @@
 
     <h1>Polinomio simplificado</h1>
     <p>{{ polisimple }}</p>
-    <!-- <table>
-        {% for fila in tabla %}
-        <tr>
-          {% for elemento in fila %}
-          <td>{{ elemento }}</td>
-          {% endfor %}
-        </tr>
-        {% endfor %}
-      </table> -->
+    {% else %}
+    <h1>Polinomio</h1>
+    <p>{{ polinomio }}</p>
+
+    <h1>Polinomio simplificado</h1>
+    <p>{{ polisimple }}</p>
+    {% endif %}
+
 </div>
 {% endblock %}

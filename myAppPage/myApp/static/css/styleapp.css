@@ -2,15 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Verdana";
+    font-family: inherit;
     list-style: none;
 }
 
 .container-nav button a:hover {
     border-radius: 25px;
-    background-color: white;
+    background-color: rgb(189, 241, 202);
     color: black;
-    border-color: white;
+    border-color: rgb(121, 241, 201);
     
 }
 
