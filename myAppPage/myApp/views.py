@@ -175,9 +175,9 @@ def saveEditedProfile(request):
         passwordErrorEdit = None
         is_validEdit = True
 
-        userRegister = usuarios.objects.filter(usuario=userEdit).exists()
-        emailRegister = usuarios.objects.filter(correo=emailEdit).exists()
-        passwordRegister = usuarios.objects.filter(contraseña=passwordEdit).exists()
+        # userRegister = usuarios.objects.filter(usuario=userEdit).exists()
+        # emailRegister = usuarios.objects.filter(correo=emailEdit).exists()
+        # passwordRegister = usuarios.objects.filter(contraseña=passwordEdit).exists()
 
         # Validación del campo "fullNameEdit"
         if not re.match(r'^[A-Za-z\s]+$', fullNameEdit):
@@ -190,31 +190,49 @@ def saveEditedProfile(request):
         if not re.match(r'^[a-z0-9]+$', userEdit):
             userErrorEdit = "Solo se permiten letras minúsculas y números."
             is_validEdit = False
-        elif userRegister:
-            userErrorEdit = "El usuario ya está registrado."
-            is_validEdit = False
+        # elif userRegister:
+        #     userErrorEdit = "El usuario ya está registrado."
+        #     is_validEdit = False
         else:
-            userErrorEdit = ""
+            # Verificar si el usuario ya está registrado
+            if usuarios.objects.exclude(usuario=request.session['usuario']['usuario']).filter(usuario=userEdit).exists():
+                userErrorEdit = "El usuario ya está registrado."
+                is_validEdit = False
+            else:
+                userErrorEdit = ""
+            # userErrorEdit = ""
 
         # Validación del campo "emailEdit"
         if not re.match(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$', emailEdit):
             emailErrorEdit = "Dirección de correo electrónico no válida."
             is_validEdit = False
-        elif emailRegister:
-            emailErrorEdit = "El correo ya está registrado."
-            is_validEdit = False
+        # elif emailRegister:
+        #     emailErrorEdit = "El correo ya está registrado."
+        #     is_validEdit = False
         else:
-            emailErrorEdit = ""
+            # Verificar si el correo ya está registrado
+            if usuarios.objects.exclude(usuario=request.session['usuario']['usuario']).filter(correo=emailEdit).exists():
+                emailErrorEdit = "El correo ya está registrado."
+                is_validEdit = False
+            else:
+                emailErrorEdit = ""
+            # emailErrorEdit = ""
 
         # Validación del campo "passwordEdit"
         if len(passwordEdit) < 8 or not re.match(r'^(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*()])[a-zA-Z0-9!@#$%^&*()]{8,}$', passwordEdit):
             passwordErrorEdit = "La contraseña debe tener al menos 8 caracteres y contener al menos un símbolo."
             is_validEdit = False
-        elif passwordRegister:
-            passwordErrorEdit = "La contraseña ya está registrada."
-            is_validEdit = False
+        # elif passwordRegister:
+        #     passwordErrorEdit = "La contraseña ya está registrada."
+        #     is_validEdit = False
         else:
-            passwordErrorEdit = ""
+            # Verificar si la contraseña ya está registrada
+            if usuarios.objects.exclude(usuario=request.session['usuario']['usuario']).filter(contraseña=passwordEdit).exists():
+                passwordErrorEdit = "La contraseña ya está registrada."
+                is_validEdit = False
+            else:
+                passwordErrorEdit = ""
+            # passwordErrorEdit = ""
 
         if is_validEdit:
             try:
@@ -290,4 +308,3 @@ def realizarEjercicio(request):
             'polinomio': polinomio,
             'polisimple': polisimple
         })
-        return render(request, 'homepageapp.html')

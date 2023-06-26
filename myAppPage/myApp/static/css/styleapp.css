@@ -6,12 +6,17 @@
     list-style: none;
 }
 
-.container-nav button a:hover {
+.hover-button {
+    display: inline-block;
+    padding: 10px 20px;
     border-radius: 25px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.hover-button:hover {
     background-color: rgb(189, 241, 202);
     color: black;
     border-color: rgb(121, 241, 201);
-    
 }
 
 /* login */
