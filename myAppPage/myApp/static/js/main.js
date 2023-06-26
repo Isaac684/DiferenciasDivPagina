@@ -2,6 +2,35 @@ const buttonAceptar = document.querySelector('#button-aceptar')
 const inputPuntos = document.querySelector('#cantidad-puntos')
 const ingresarXY = document.querySelector('.puntosXY')
 const ButtonEnviar = document.querySelector('#Enviar')
+let aceptarPresionado = false;
+
+ButtonEnviar.addEventListener("click", function(event) {
+    var inputPuntos = document.getElementById("cantidad-puntos");
+    var cantPuntos = parseInt(inputPuntos.value);
+
+    if (isNaN(cantPuntos) || cantPuntos < 3 || cantPuntos > 100) {
+        event.preventDefault();
+        alert("Por favor, ingrese una cantidad válida de puntos entre 3 y 100.");
+        return;
+    }
+
+    if (!aceptarPresionado) { // Si el botón "Aceptar" no ha sido presionado
+        event.preventDefault();
+        alert("Por favor, presione el botón 'Aceptar' antes de enviar el formulario.");
+        return;
+    }
+
+    var valorX = document.getElementsByName("valorX");
+    var valorY = document.getElementsByName("valorY");
+
+    for (let i = 0; i < valorX.length; i++) {
+        if (valorX[i].value === "" || valorY[i].value === "") {
+            event.preventDefault();
+            alert("Por favor, ingrese un valor para el punto " + (i + 1) + " antes de enviar el formulario.");
+            return; 
+        }
+    }
+});
 
 // ButtonEnviar.addEventListener('submit',function (e) {
 //     let  valoresX = document.querySelectorAll('#valorX');
@@ -85,6 +114,8 @@ buttonAceptar.addEventListener('click',function () {
     let valoresY = document.querySelectorAll('#valorY');
     eventoInputsXY(valoresX)
     eventoInputsXY(valoresY)
+
+    aceptarPresionado = true; // Se marca el botón "Aceptar" como presionado
 })
 
 const eventoInputsXY = (valores) =>{
@@ -105,4 +136,3 @@ const eventoInputsXY = (valores) =>{
         })
     }
 }
-
