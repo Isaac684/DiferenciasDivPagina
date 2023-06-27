@@ -7,7 +7,6 @@ class diferencias_divididas:
     fx = []
     px = None
     verificarResp = []
-    cadaiteracio = []
 
     def insercion_datos(self, valoresx, valoresy):  
         self.x = np.array(valoresx)
@@ -84,42 +83,25 @@ class diferencias_divididas:
         diagonal = cantidad_x - 1
         diferenciaActual = 1
         j = 3
-        # if mostrarpasos:
-        #     print('A continuacion veras que datos son tomados para realizar cada diferencia divididas')
+
         while j < m:
             # Añade título para cada columna
             self.titulo_tabla.append(f'{j - 2}ᵃ D. D.')
             # cada fila de columna
             i = 0
-            
-            # if mostrarpasos and j < (m-1):
-            #     print(f'\nDiferencias actual: {diferenciaActual}')
 
             paso = j - 2  # inicia en 1
             while i < diagonal:
                 numerador = self.tabla[i + 1, j - 1] - self.tabla[i, j - 1]
                 denominador = (self.x[i + paso] - self.x[i])
-                self.tabla[i, j] = numerador / denominador
-                # if mostrarpasos:
-                self.cadaiteracio.append({
-                    'titulo': f'{diferenciaActual}ª Diferencia Dividida',
-                    'primerDato':f'Tomamos {self.tabla[i + 1, j - 1]} y le restamos {self.tabla[i, j - 1]} asi obtenemos el numerador',
-                    'segundoDato': f'Tomamos {self.x[i + paso]} y le restamos {self.x[i]} asi obtenemos el denominador',
-                    'resultado': f'Ahora dividimos el numerador entre el denominador osea {numerador}/{denominador} dando asi: {self.tabla[i, j]} ahora este dato lo agregamos a la tabla',
-                })
-                # print(f'{diferenciaActual}ª Diferencia Dividida')    
-                # print(f'Tomamos {self.tabla[i + 1, j - 1]} y le restamos {self.tabla[i, j - 1]} asi obtenemos el numerador')
-                # print(f'Tomamos {self.x[i + paso]} y le restamos {self.x[i]} asi obtenemos el denominador')
-                # print(f'Ahora dividimos el numerador entre el denominador osea {numerador}/{denominador} dando asi:')
-                # print(f'[{self.tabla[i, j]}] ahora este dato lo agregamos a la tabla')
-                
+                self.tabla[i, j] = numerador / denominador  
                 i = i + 1    
+
             diagonal = diagonal - 1
             j = j + 1
-            diferenciaActual += 1
 
         self.dDividida = self.tabla[0, 3:]
-
+        self.verificarResp = []
         datos = self.calcular_polinomio()
         for i in range(len(self.x)):
             self.verificarResp.append(f'Evaluando la funcion obtenida en el punto {self.x[i]} da como resultado: {self.px(self.x[i])}')

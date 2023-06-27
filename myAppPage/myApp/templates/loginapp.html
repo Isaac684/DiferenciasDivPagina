@@ -5,40 +5,30 @@
 <div class="container-fluid border border-white-50 rounded-4" style="margin-top: 100px; width: 400px; height: 450px; backdrop-filter: blur(20px); box-shadow: 0 0 30px rgba(0, 0, 0, .5); background-color: #2c2c2c">
     <div class="p-4">
 
-        <h2 class="text-white text-center">Login</h2>
+        <h2 class="text-white text-center">Iniciar sesion</h2>
 
         <form method="POST" action="{% url 'loginUser' %}">
             {% csrf_token %}
 
             <div class="input-box">
                 <span class="icon me-3"><ion-icon name="person-circle-outline"></ion-icon></span>
-                <label class="my-2 text-white px-1">User</label>
+                <label class="my-2 text-white px-1">Usuario</label>
                 <input type="text" id="userLogin" name="userLogin" class="form-control rounded-pill">
             </div>
 
             <div class="input-box">
                 <span class="icon me-3"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                <label class="my-2 text-white px-1">Password</label>
+                <label class="my-2 text-white px-1">Contraseña</label>
                 <input type="password" id="userPassword" name="userPassword" class="form-control rounded-pill">
             </div>
 
             <div class="d-flex justify-content-between my-3">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="remember">
-                    <label class="form-check-label text-white" for="remember">Recordarme</label>
+                    <label class="form-check-label text-white" for="remember">Ver contraseña</label>
                 </div>
                 <a href="/recover" class="text-white">¿Contraseña olvidada?</a>
             </div>
-
-            <!-- {% block messages %}
-                {% if messages %}
-                    <div class="text-center">
-                        {% for msg in messages %}
-                            <small class="text-danger">{{ msg }}</small>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            {% endblock %} -->
 
             {% if messages %}
             <div class="text-center">
@@ -49,11 +39,11 @@
             {% endif %}
 
             <div class="d-flex justify-content-center my-3">
-                <button type="submit" class="btn btn-primary btn-block rounded-pill">Login</button>
+                <button type="submit" class="btn btn-primary btn-block rounded-pill">Entrar</button>
             </div>
 
             <div class="text-center">
-                <a href="{% url 'guestPage' %}" class="text-success">Enter as guest</a>
+                <a href="{% url 'guestPage' %}" class="text-success">Entrar como invitado</a>
             </div>
 
             <div class="text-center my-2">

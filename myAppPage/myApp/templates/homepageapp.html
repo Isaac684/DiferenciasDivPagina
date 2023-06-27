@@ -8,34 +8,41 @@
             Calculadora de Diferencias Divididas
         </h1>
         <p class="mt-4 text-justify fs-5">
-            ¡Bienvenido a nuestra calculadora online de diferencias divididas! 
+            ¡Bienvenido a nuestra calculadora online de diferencias divididas!
         </p>
         <p class="mt-3 pb-3 text-justify">Aquí puedes calcular y comprender las diferencias
-        divididas de una función en puntos discretos. Ingresa los puntos conocidos y obtendrás los resultados de manera rápida y
-        precisa.
-        
-        Nuestra calculadora utiliza el método de diferencias finitas para calcular las diferencias entre los valores de la
-        función en diferentes puntos. También muestra una gráfica de la función encontrada y te ofrece un paso a paso del
-        cálculo.
-        
-        Simplifica tus cálculos numéricos y análisis de funciones con nuestra calculadora online de diferencias divididas.
-        ¡Comienza a usarla ahora mismo!
+            divididas de una función en puntos discretos. Ingresa los puntos conocidos y obtendrás los resultados de
+            manera rápida y
+            precisa.
+
+            Nuestra calculadora utiliza el método de diferencias finitas para calcular las diferencias entre los valores
+            de la
+            función en diferentes puntos. También muestra una gráfica de la función encontrada y te ofrece un paso a
+            paso del
+            cálculo.
+
+            Simplifica tus cálculos numéricos y análisis de funciones con nuestra calculadora online de diferencias
+            divididas.
+            ¡Comienza a usarla ahora mismo!
         </p>
-        <button type="button" class="btn btn-primary mb-4 btn-lg"><a  class="nav-link" href="#calculadora">Usar calculadora</a></button>
+        <button type="button" class="btn btn-primary mb-4 btn-lg"><a class="nav-link" href="#calculadora">Usar
+                calculadora</a></button>
     </div>
-    <div class="row m-0 pt-5 pb-5 ps-2 pe-2" >
-        <h1 class="fw-bolder mb-5" >¿Como se utiliza la calculadora?</h1>
+    <div class="row m-0 pt-5 pb-5 ps-2 pe-2">
+        <h1 class="fw-bolder mb-5">¿Como se utiliza la calculadora?</h1>
         <div class="text-center col-md-6 col-lg-4">
             <div class="d-flex align-items-center">
                 <div>
-                    <div class="circle bg-danger text-white mr-3 d-flex justify-content-center align-items-center" style="width: 80px; height: 80px; border-radius: 50%;">
+                    <div class="circle bg-danger text-white mr-3 d-flex justify-content-center align-items-center"
+                        style="width: 80px; height: 80px; border-radius: 50%;">
                         <span class="step-number">1</span>
                     </div>
                 </div>
                 <div>
                     <p class="m-0">Paso 1</p>
                     <p class="text-black-50" style="text-align: justify;">
-                        Puede ingresar en los campos los puntos correspondientes.
+                        Ingrese la cantidad de puntos que desea graficar y luego presione el boton de aceptar 
+                        .
                     </p>
                 </div>
             </div>
@@ -44,15 +51,16 @@
         <div class="text-center col-md-6 col-lg-4">
             <div class="d-flex align-items-center">
                 <div>
-                    <div class="circle bg-danger text-white mr-3 d-flex justify-content-center align-items-center" style="width: 80px; height: 80px; border-radius: 50%;">
+                    <div class="circle bg-danger text-white mr-3 d-flex justify-content-center align-items-center"
+                        style="width: 80px; height: 80px; border-radius: 50%;">
                         <span class="step-number">2</span>
                     </div>
                 </div>
                 <div>
                     <p class="m-0">Paso 2</p>
                     <p class="text-black-50" style="text-align: justify;">
-                        Tener en cuenta que el primer campo solo acepta una cantidad entre 3 a 100 puntos y los demas
-                        campos se permiten cantidades enteras y decimales.
+                        Rellene cada campo con los puntos correspondientes, recuerda que si un valor no esta rellenado
+                        no podras calcular el resultado!
                     </p>
                 </div>
             </div>
@@ -61,7 +69,8 @@
         <div class="text-center col-md-6 col-lg-4 pb-5">
             <div class="d-flex align-items-center">
                 <div>
-                    <div class="circle bg-danger text-white mr-3 d-flex justify-content-center align-items-center" style="width: 80px; height: 80px; border-radius: 50%;">
+                    <div class="circle bg-danger text-white mr-3 d-flex justify-content-center align-items-center"
+                        style="width: 80px; height: 80px; border-radius: 50%;">
                         <span class="step-number">3</span>
                     </div>
                 </div>
@@ -76,11 +85,13 @@
         </div>
     </div>
     <div class="bg-dark-subtle p-5">
-        <form method="POST" action="{% url 'realizarEjercicio' %}" id="calculadora" class="rounded-2 border border-1 p-5" style="background-color:antiquewhite;">
+        <form method="POST" action="{% url 'realizarEjercicio' %}" id="calculadora"
+            class="rounded-2 border border-1 p-5" style="background-color:antiquewhite;">
             {% csrf_token %}
             <h4 class="mb-4 text-center">Calculadora de diferencias divididas</h4>
             <div class="input-group mb-3">
-                <input type="text" id="cantidad-puntos" class="form-control" placeholder="Ingrese la cantidad de puntos" aria-describedby="button-aceptar">
+                <input type="text" id="cantidad-puntos" class="form-control" placeholder="Ingrese la cantidad de puntos"
+                    aria-describedby="button-aceptar">
                 <button class="btn btn-primary" type="button" id="button-aceptar">Aceptar</button>
             </div>
             <div class="row">
@@ -93,102 +104,119 @@
                 </div>
             </div>
             {% if request.session.usuario %}
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="checkbox" value="" id="pasoApaso">
-                <label class="form-check-label" for="pasoApaso">
-                    Ver paso a paso
-                </label>
-            </div>
-            <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="" id="verificarRespuesta">
-                <label class="form-check-label" for="verificarRespuesta">
-                    Verificar respuesta
-                </label>
-            </div>
+            <p class="text-success">Todas las funciones estan habilitadas!</p>
             {% else %}
-            <div class="form-check mb-2">
-                <input class="form-check-input"  disabled type="checkbox" id="pasoApaso">
-                <label class="form-check-label" for="pasoApaso">
-                    Ver paso a paso
-                </label>
-                <br>
-                <span class="text-warning-emphasis">Valido solo para usuarios registrados</span>
-            </div>
-            <div class="form-check mb-3">
-                <input class="form-check-input" disabled type="checkbox" id="verificarRespuesta">
-                <label class="form-check-label" for="verificarRespuesta">
-                    Verificar respuesta
-                </label>
-                <br>
-                <span class="text-warning-emphasis">Valido solo para usuarios registrados</span>
-                <p>Notas al pie<sup>1</sup></p>
+            <div class="text-danger">
+                <p>Algunas funciones estan deshablitadas debido a que no estas registrado!</p>
+                <p>Estas son: </p>
+                <p>- Ver la grafica generada</p>
+                <p>- Observar la tabla de diferencias</p>
+                <p>- Ver las diferencias resultantes</p>
+                <p>- Verificar si el polinomio es el correctp</p>
             </div>
             {% endif %}
-            <button type="submit" id="Enviar" class="btn btn-primary">Submit</button>
+            <button type="submit" id="Enviar" class="btn btn-primary">Calcular</button>
         </form>
     </div>
+    {% if request.session.usuario %}
     <div class="pt-5 pb-5 text-center pe-5">
-        {% if request.session.usuario %}
         <h1 class="pb-3">Grafica de la funcion</h1>
-            {% if iamgenG %}
-                <img src="data:image/png;base64,{{ iamgenG }}" alt="Imagen grafica">
-                {% else %}
-                <h5>Aun no hay grafica generada</h5>
-            {% endif %}
-    </div> 
+        {% if iamgenG %}
+        <img src="data:image/png;base64,{{ iamgenG }}" alt="Imagen grafica">
+        {% else %}
+        <h5>Aun no hay grafica generada</h5>
+        {% endif %}
+    </div>
+
     <div class="pt-5 ps-5 pb-5 bg-dark-subtle text-center pe-5">
         <h1 class="pb-3">Tabla Diferencia Dividida</h1>
         <table>
             <thead>
-              <tr>
-                {% for nombre_columna in nombres_columnas %}
-                  <th>{{ nombre_columna }}</th>
-                {% endfor %}
-              </tr>
+                <tr>
+                    {% for nombre_columna in nombres_columnas %}
+                    <th>{{ nombre_columna }}</th>
+                    {% endfor %}
+                </tr>
             </thead>
             <tbody>
-              {% for fila in tabla %}
+                {% for fila in tabla %}
                 <tr>
-                  {% for valor in fila %}
+                    {% for valor in fila %}
                     {% if forloop.counter > 3 and forloop.parentloop.first %}
-                      <td style="background-color: antiquewhite;">{{ valor }}</td>
+                    <td style="background-color: antiquewhite;">{{ valor }}</td>
                     {% else %}
-                      <td>{{ valor }}</td>
+                    <td>{{ valor }}</td>
                     {% endif %}
-                  {% endfor %}
+                    {% endfor %}
                 </tr>
-              {% endfor %}
+                {% endfor %}
             </tbody>
-          </table>
-          
+        </table>
+
     </div>
     <div class="pt-5 ps-5 pb-5 text-center pe-5">
         <h1 class="pb-3">Diferencias de cada iteracion</h1>
         <table>
             <tbody>
-              <tr>
-                {% for valor in dDividida %}
-                  <td>{{ valor }}</td>
-                {% endfor %}
-              </tr>
+                <tr>
+                    {% for valor in dDividida %}
+                    <td>{{ valor }}</td>
+                    {% endfor %}
+                </tr>
             </tbody>
-          </table>
+        </table>
     </div>
+
     <div class="pt-5 ps-5 pb-5 text-center pe-5 bg-dark-subtle">
         <h1 class="pb-3">Polinomio</h1>
         <p>{{ polinomio }}</p>
-      
+    </div>
+    
+    <div class="pt-5 ps-5 pb-5 text-center pe-5 bg-dark-subtle">
         <h1 class="pb-3">Polinomio simplificado</h1>
-        <p>{{ polisimple | safe }}</p> <!-- Utilizar el filtro "safe" para renderizar las etiquetas HTML -->
-      
-        {% else %}
+        <p><span class="exponente fs-6">{{ polisimple | safe }}</span></p>
+        <!-- Utilizar el filtro "safe" para renderizar las etiquetas HTML -->
+    </div>
+
+    <div class="pt-5 ps-5 pb-5 text-center pe-5">
+        <h1 class="pb-3">Verificando respuesta</h1>
+        {% for resp in arreglo_iteraciones %}
+        <p>{{ resp}}</p>
+        {% endfor %}
+    </div>
+
+    {% else %}
+
+    <div class="pt-5 ps-5 pb-5 text-center pe-5 bg-dark-subtle">
         <h1 class="pb-3">Polinomio</h1>
         <p>{{ polinomio }}</p>
-      
-        <h1 class="pb-3">Polinomio simplificado</h1>
-        <p><span class="exponente">{{ polisimple | safe }}</span></p> <!-- Utilizar el filtro "safe" para renderizar las etiquetas HTML -->
-      
-        {% endif %}     
     </div>
+    
+    <div class="pt-5 ps-5 pb-5 text-center pe-5 bg-dark-subtle">
+        <h1 class="pb-3">Polinomio simplificado</h1>
+        <p><span class="exponente fs-6">{{ polisimple | safe }}</span></p>
+        <!-- Utilizar el filtro "safe" para renderizar las etiquetas HTML -->
+    </div>
+    {% endif %}
+
+    <footer class="text-white text-center pt-3" style="background-color: rgb(0, 0, 0);">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p>Josue Isaac Herrera Campos HC21018</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>Luis Emilio González GM21068</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>© No copyright</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
 {% endblock %}

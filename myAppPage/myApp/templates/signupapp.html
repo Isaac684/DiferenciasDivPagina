@@ -7,21 +7,21 @@
 <div class="container-fluid border border-white-50 rounded-4" style="margin-top: 100px;  width: 400px; height: 569px; backdrop-filter: blur(20px); box-shadow: 0 0 30px rgba(0, 0, 0, .5); background-color: #2e2e2e">
     <div class="p-4">
 
-        <h2 class="text-white text-center mb-1">Registration</h2>
+        <h2 class="text-white text-center mb-1">Registro</h2>
 
         <form method="POST" action="{% url 'registerUser' %}" id="registerForm">
             {% csrf_token %}
             
             <div class="input-box">
                 <span class="icon me-3" style="line-height: 108px;"><ion-icon name="person-circle-outline"></ion-icon></span>
-                <label class="my-1 text-white px-1">Full Name</label>
+                <label class="my-1 text-white px-1">Nombre completo</label>
                 <input type="text" id="fullName" name="fullName" class="form-control rounded-pill" value="{{ fullName|default:'' }}">
                 <small id="fullNameError" class="form-text text-danger text-center">{{ fullNameError }}</small>
             </div>
 
             <div class="input-box">
                 <span class="icon me-3" style="line-height: 108px;"><ion-icon name="person-circle-outline"></ion-icon></span>
-                <label class="my-1 text-white px-1">User</label>
+                <label class="my-1 text-white px-1">Usuario</label>
                 <input type="text" id="userr" name="userr" class="form-control rounded-pill" value="{{ userr|default:'' }}">
                 {% if userError %}
                     <small id="userError" class="form-text text-danger text-center">{{ userError }}</small>
@@ -41,7 +41,7 @@
 
             <div class="input-box">
                 <span class="icon me-3" style="line-height: 108px;"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                <label class="my-1 text-white px-1">Password</label>
+                <label class="my-1 text-white px-1">Contraseña</label>
                 <input type="password" id="password" name="password" class="form-control rounded-pill" value="{{ password|default:'' }}">
                 {% if passwordError %}
                     <small id="passwordError" class="form-text text-danger text-center">{{ passwordError }}</small>
@@ -50,11 +50,11 @@
             </div>
 
             <div class="d-flex justify-content-center my-2">
-                <button type="submit" id="registerButton" class="btn btn-primary btn-block rounded-pill">Register</button>
+                <button type="submit" id="registerButton" class="btn btn-primary btn-block rounded-pill">Registrarse</button>
             </div>
 
             <div class="text-center">
-                <p class="text-white">¿Ya tienes una cuenta? <a href="/loginapp" class="text-warning">Login</a></p>
+                <p class="text-white">¿Ya tienes una cuenta? <a href="/loginapp" class="text-warning">Iniciar sesion</a></p>
             </div>
         </form>
 

@@ -23,8 +23,9 @@ def logout(request):
     return redirect('/loginapp')
 
 def guest_page(request):
-    is_guest = True
-    return render(request, 'homepageapp.html', {'is_guest': is_guest})
+    # is_guest = True
+    # return render(request, 'homepageapp.html', {'is_guest': is_guest})
+    return render(request, 'homepageapp.html')
 
 def signup(request):
     return render(request, 'signupapp.html')
@@ -299,13 +300,14 @@ def realizarEjercicio(request):
         image64 = base64.b64encode(buffer.getvalue()).decode()
 
         titulo_tabla, tabla, dDividida, polinomio, polisimple = mtdd.calcular_polinomio()
-        print(mtdd.verificarResp)
-        print(mtdd.cadaiteracio)
+
+        arreglo_iteraciones = mtdd.verificarResp
         return render(request, 'homepageapp.html', {
             'iamgenG':image64,
             'tabla': tablaRedondeada,
             'nombres_columnas': nombres_columnas,
             'dDividida': dDividida,
             'polinomio': polinomio,
-            'polisimple': polisimple
+            'polisimple': polisimple,
+            'arreglo_iteraciones': arreglo_iteraciones
         })

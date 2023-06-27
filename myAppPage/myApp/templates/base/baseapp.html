@@ -40,55 +40,24 @@
                             <button class="border-0 bg-transparent text-light"><a class="nav-link mx-3 active hover-button" href="/userProfile">Perfil de usuario</a></button>
                         </li>
                         <li class="">
-                            <button class="border-0 bg-transparent text-light"><a class="nav-link mx-3 active hover-button" href="/logout">Sign off</a></button>
+                            <button class="border-0 bg-transparent text-light"><a class="nav-link mx-3 active hover-button" href="/logout">Salir</a></button>
                         </li>
                     {% else %}
                         <li class="">
-                            <button class="border-0 bg-transparent text-light"><a class="nav-link active mx-3 hover-button" href="/loginapp">Login</a></button>
+                            <button class="border-0 bg-transparent text-light"><a class="nav-link active mx-3 hover-button" href="/loginapp">Iniciar sesion</a></button>
                         </li>
                         <li class="">
-                            <button class="border-0 bg-transparent text-light"><a class="nav-link active mx-3 hover-button" href="/signupapp">Sign up</a></button>
+                            <button class="border-0 bg-transparent text-light"><a class="nav-link active mx-3 hover-button" href="/signupapp">Registrarse</a></button>
                         </li>
                         <li class="">
-                            <button class="border-0 bg-transparent text-light"><a class="nav-link active mx-3 hover-button" href="#">Contact</a></button>
+                            <button class="border-0 bg-transparent text-light"><a class="nav-link active mx-3 hover-button" href="https://github.com/Isaac684/DiferenciasDivPagina.git">Contacto</a></button>
                         </li>
                     {% endif %}
               </ul>
             </div>
           </div>
         </div>
-      </nav>
-    <!-- <header class="fixed-top border-bottom" style="background-color: #000000;">
-            <div class="offcanvas-body d-flex align-self-end">
-                <button class="border-0 bg-transparent text-light"><a class="nav-link mx-3 hover-button" href="/loginapp">Login</a></button>
-                <button class="border-0 bg-transparent text-light"><a class="nav-link mx-3 hover-button" href="/signupapp">Sign up</a></button>
-                <button class="border-0 bg-transparent text-light"><a class="nav-link mx-3 hover-button" href="#">Contact</a></button>
-            </div>
-        <div class=" container-fluid d-flex justify-content-between align-items-center">
-            {% if is_guest %}
-                <img src="{% static 'img/logo3.png' %}" class="img-fluid" alt="" style="height: 90px;">
-                <nav class="container-nav d-flex mx-4">
-                    <button class="border-0 bg-transparent text-light"><a class="nav-link mx-3 hover-button" href="/loginapp">Login</a></button>
-                    <button class="border-0 bg-transparent text-light"><a class="nav-link mx-3 hover-button" href="/signupapp">Sign up</a></button>
-                    <button class="border-0 bg-transparent text-light"><a class="nav-link mx-3 hover-button" href="#">Contact</a></button>
-                </nav>
-            {% else %}
-                <img src="{% static 'img/logo3.png' %}" class="img-fluid" alt="" style="height: 90px;">
-                <nav class="container-nav d-flex mx-4">
-                    {% if request.session.usuario %}
-                        <button class="border-0 bg-transparent text-light"><a class="nav-link mx-3 hover-button" href="/homepage">Inicio</a></button>
-                        <button class="border-0 bg-transparent text-light"><a class="nav-link mx-3 hover-button" href="/userProfile">Perfil de usuario</a></button>
-                        <button class="border-0 bg-transparent text-light"><a class="nav-link mx-3 hover-button" href="/logout">Sign off</a></button>
-                    {% else %}
-                        <button class="border-0 bg-transparent text-light"><a class="nav-link mx-3 hover-button" href="/loginapp">Login</a></button>
-                        <button class="border-0 bg-transparent text-light"><a class="nav-link mx-3 hover-button" href="/signupapp">Sign up</a></button>
-                        <button class="border-0 bg-transparent text-light"><a class="nav-link mx-3 hover-button" href="#">Contact</a></button>
-                    {% endif %}
-                </nav>
-            {% endif %}
-        </div>
-
-    </header> -->
+    </nav>
 
     <main class="d-flex align-self-center">
         {% block content %}
