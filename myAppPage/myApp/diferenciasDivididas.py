@@ -104,7 +104,7 @@ class diferencias_divididas:
         self.verificarResp = []
         datos = self.calcular_polinomio()
         for i in range(len(self.x)):
-            self.verificarResp.append(f'Evaluando la funcion obtenida en el punto {self.x[i]} da como resultado: {self.px(self.x[i])}')
+            self.verificarResp.append(f'Evaluando el polinomio en el punto {self.x[i]} da como resultado: {self.px(self.x[i])}')
         return datos
     
     def mostrar_grafica(self):

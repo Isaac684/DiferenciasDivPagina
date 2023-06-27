@@ -3,10 +3,10 @@ from .models import usuarios
 from django.contrib import messages
 import re
 import io
-
 import base64
 import numpy as np
 from .diferenciasDivididas import diferencias_divididas
+
 # Create your views here.
 def homepage(request):
     return render(request, 'homepageapp.html')
@@ -23,8 +23,6 @@ def logout(request):
     return redirect('/loginapp')
 
 def guest_page(request):
-    # is_guest = True
-    # return render(request, 'homepageapp.html', {'is_guest': is_guest})
     return render(request, 'homepageapp.html')
 
 def signup(request):
@@ -132,7 +130,6 @@ def loginUser(request):
                 'correo': usuario.correo,
                 'contraseña': usuario.contraseña
             }
-            # request.session['usuario'] = usuarios_list[0].usuario
             return redirect('/homepage')
         else:
             messages.success(request, 'Usuario o contraseña incorrectos!!!')
@@ -176,10 +173,6 @@ def saveEditedProfile(request):
         passwordErrorEdit = None
         is_validEdit = True
 
-        # userRegister = usuarios.objects.filter(usuario=userEdit).exists()
-        # emailRegister = usuarios.objects.filter(correo=emailEdit).exists()
-        # passwordRegister = usuarios.objects.filter(contraseña=passwordEdit).exists()
-
         # Validación del campo "fullNameEdit"
         if not re.match(r'^[A-Za-z\s]+$', fullNameEdit):
             fullNameErrorEdit = "Solo se permiten letras y espacios en blanco."
@@ -191,9 +184,7 @@ def saveEditedProfile(request):
         if not re.match(r'^[a-z0-9]+$', userEdit):
             userErrorEdit = "Solo se permiten letras minúsculas y números."
             is_validEdit = False
-        # elif userRegister:
-        #     userErrorEdit = "El usuario ya está registrado."
-        #     is_validEdit = False
+
         else:
             # Verificar si el usuario ya está registrado
             if usuarios.objects.exclude(usuario=request.session['usuario']['usuario']).filter(usuario=userEdit).exists():
@@ -201,15 +192,12 @@ def saveEditedProfile(request):
                 is_validEdit = False
             else:
                 userErrorEdit = ""
-            # userErrorEdit = ""
 
         # Validación del campo "emailEdit"
         if not re.match(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$', emailEdit):
             emailErrorEdit = "Dirección de correo electrónico no válida."
             is_validEdit = False
-        # elif emailRegister:
-        #     emailErrorEdit = "El correo ya está registrado."
-        #     is_validEdit = False
+
         else:
             # Verificar si el correo ya está registrado
             if usuarios.objects.exclude(usuario=request.session['usuario']['usuario']).filter(correo=emailEdit).exists():
@@ -217,15 +205,12 @@ def saveEditedProfile(request):
                 is_validEdit = False
             else:
                 emailErrorEdit = ""
-            # emailErrorEdit = ""
 
         # Validación del campo "passwordEdit"
         if len(passwordEdit) < 8 or not re.match(r'^(?=.*[a-zA-Z0-9])(?=.*[!@#$%^&*()])[a-zA-Z0-9!@#$%^&*()]{8,}$', passwordEdit):
             passwordErrorEdit = "La contraseña debe tener al menos 8 caracteres y contener al menos un símbolo."
             is_validEdit = False
-        # elif passwordRegister:
-        #     passwordErrorEdit = "La contraseña ya está registrada."
-        #     is_validEdit = False
+
         else:
             # Verificar si la contraseña ya está registrada
             if usuarios.objects.exclude(usuario=request.session['usuario']['usuario']).filter(contraseña=passwordEdit).exists():
@@ -233,7 +218,6 @@ def saveEditedProfile(request):
                 is_validEdit = False
             else:
                 passwordErrorEdit = ""
-            # passwordErrorEdit = ""
 
         if is_validEdit:
             try:
@@ -272,14 +256,12 @@ def saveEditedProfile(request):
 def realizarEjercicio(request):
     if request.method == 'POST':
         image64 = None
-        #verificarRespuesta = request.POST.get('verificarRespuesta')
-        #pasoApaso = request.POST.get('pasoApaso')
+
         valoresX = request.POST.getlist('valorX')
         valoresY = request.POST.getlist('valorY')
         enterosX = list(map(float, valoresX))
         enterosY = list(map(float, valoresY))
-        print(enterosX)
-        print(enterosY)
+
         mtdd = diferencias_divididas()
         mtdd.insercion_datos(enterosX,enterosY)
 

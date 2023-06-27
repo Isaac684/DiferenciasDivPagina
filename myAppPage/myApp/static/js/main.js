@@ -32,22 +32,6 @@ ButtonEnviar.addEventListener("click", function(event) {
     }
 });
 
-// ButtonEnviar.addEventListener('submit',function (e) {
-//     let  valoresX = document.querySelectorAll('#valorX');
-//     let valoresY = document.querySelectorAll('#valorY');
-
-//     for (let key in valoresX) {
-//         if (key.value == '') {
-//             e.preventDefault()
-//         }
-//     }
-//     for (let key2 in valoresY) {
-//         if (key2.value == '') {
-//             e.preventDefault()
-//         }
-//     }
-// })
-
 inputPuntos.addEventListener('keypress', function (e) {
     let key = e.which || e.keyCode; // Obtener el código de tecla presionada
     if(!inputPuntos.value == ''){
