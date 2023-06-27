@@ -27,6 +27,15 @@
         </p>
         <button type="button" class="btn btn-primary mb-4 btn-lg"><a class="nav-link" href="#calculadora">Usar
                 calculadora</a></button>
+        {% if iamgenG %}
+            {%if request.session.usuario %}        
+                <button type="button" class="btn btn-primary mb-4 btn-lg"><a class="nav-link" href="#irResultados">
+                            Ver resultados</a></button>
+            {% else %}        
+                <button type="button" class="btn btn-primary mb-4 btn-lg"><a class="nav-link" href="#irResultadosPolinomio">
+                        Ver resultados</a></button>
+            {% endif%}
+        {% endif%}
     </div>
     <div class="aparecer-derecha row m-0 pt-5 pb-5 ps-2 pe-2">
         <h1 class="fw-bolder mb-5">¿Como se utiliza la calculadora?</h1>
@@ -109,17 +118,17 @@
             <div class="text-danger">
                 <p>Algunas funciones estan deshablitadas debido a que no estas registrado!</p>
                 <p>Estas son: </p>
-                <p>- Ver la grafica generada</p>
-                <p>- Observar la tabla de diferencias</p>
-                <p>- Ver las diferencias resultantes</p>
-                <p>- Verificar si el polinomio es el correcto</p>
+                <p>- Ver la grafica generada.</p>
+                <p>- Observar la tabla de diferencias.</p>
+                <p>- Ver las diferencias resultantes.</p>
+                <p>- Verificar si el polinomio es el correcto.</p>
             </div>
             {% endif %}
             <button type="submit" id="Enviar" class="btn btn-primary">Calcular</button>
         </form>
     </div>
     {% if request.session.usuario %}
-    <div class="pt-5 pb-5 text-center pe-5 bg-primary-subtle aparecer-abajo">
+    <div id="irResultados" class="pt-5 pb-5 text-center pe-5 bg-primary-subtle aparecer-abajo">
         <h1 class="pb-3">Grafica de la funcion</h1>
         {% if iamgenG %}
         <img src="data:image/png;base64,{{ iamgenG }}" alt="Imagen grafica">
@@ -130,7 +139,7 @@
 
     <div class="pt-5 ps-5 pb-5 bg-secondary-subtle text-center pe-5 aparecer-izquierda">
         <h1 class="pb-3">Tabla Diferencia Dividida</h1>
-        <table>
+        <table class="table-dark">
             <thead>
                 <tr>
                     {% for nombre_columna in nombres_columnas %}
@@ -143,7 +152,7 @@
                 <tr>
                     {% for valor in fila %}
                     {% if forloop.counter > 3 and forloop.parentloop.first %}
-                    <td style="background-color: antiquewhite;">{{ valor }}</td>
+                    <td style="background-color: rgb(235, 157, 56);">{{ valor }}</td>
                     {% else %}
                     <td>{{ valor }}</td>
                     {% endif %}
@@ -156,7 +165,7 @@
     </div>
     <div class="pt-5 ps-5 pb-5 text-center pe-5 aparecer-derecha" style="background-color: antiquewhite;">
         <h1 class="pb-3">Diferencias de cada iteracion</h1>
-        <table>
+        <table class="table-dark">
             <tbody>
                 <tr>
                     {% for valor in dDividida %}
@@ -181,13 +190,13 @@
     <div class="pt-5 ps-5 pb-5 text-center pe-5 aparecer-izquierda">
         <h1 class="pb-3">Verificando respuesta</h1>
         {% for resp in arreglo_iteraciones %}
-        <p>{{ resp}}</p>
+        <p>{{ resp | safe}}</p>
         {% endfor %}
     </div>
 
     {% else %}
 
-    <div class="pt-5 ps-5 pb-5 text-center pe-5 bg-dark-subtle aparecer-derecha">
+    <div id="irResultadosPolinomio" class="pt-5 ps-5 pb-5 text-center pe-5 bg-dark-subtle aparecer-derecha">
         <h1 class="pb-3">Polinomio</h1>
         <p>{{ polinomio }}</p>
     </div>
@@ -230,7 +239,7 @@
         <p class="text-dark-emphasis">
             El polinomio resultante es una aproximación de la función original y se puede utilizar para interpolar y estimar valores en puntos intermedios.
         </p>
-        <p class="text-dark-emphasis">
+        <p class="text-dark-emphasis pb-5">
             En resumen, las diferencias divididas de Newton son una herramienta fundamental en la interpolación, permitiendo construir un polinomio de interpolación utilizando las diferencias entre los valores de una función en puntos discretos. Las fórmulas de las diferencias divididas se utilizan para calcular estas diferencias y crear el polinomio de interpolación.
         </p>
     </div>

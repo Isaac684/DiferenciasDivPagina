@@ -255,7 +255,6 @@ def saveEditedProfile(request):
     
 def realizarEjercicio(request):
     if request.method == 'POST':
-        image64 = None
 
         valoresX = request.POST.getlist('valorX')
         valoresY = request.POST.getlist('valorY')
