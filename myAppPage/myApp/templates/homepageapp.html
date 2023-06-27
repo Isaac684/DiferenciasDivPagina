@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="">
-    <div class="container-fluid p-4 bg-dark-subtle" style="height: 30%;">
+    <div class="container-fluid p-4 bg-dark-subtle">
         <h1 class="fw-bolder pt-2">
             Calculadora de Diferencias Divididas
         </h1>
@@ -21,8 +21,9 @@
         Simplifica tus cálculos numéricos y análisis de funciones con nuestra calculadora online de diferencias divididas.
         ¡Comienza a usarla ahora mismo!
         </p>
+        <button type="button" class="btn btn-primary mb-4 btn-lg"><a  class="nav-link" href="#calculadora">Usar calculadora</a></button>
     </div>
-    <div class="row m-0 pt-5 pb-5 ps-2 pe" >
+    <div class="row m-0 pt-5 pb-5 ps-2 pe-2" >
         <h1 class="fw-bolder mb-5" >¿Como se utiliza la calculadora?</h1>
         <div class="text-center col-md-6 col-lg-4">
             <div class="d-flex align-items-center">
@@ -74,10 +75,10 @@
             </div>
         </div>
     </div>
-    <div class="bg-dark-subtle pt-5 pb-5 d-flex">
-        <form method="POST" action="{% url 'realizarEjercicio' %}" class="col-6 rounded-2 border border-1 m-5 p-5">
+    <div class="bg-dark-subtle p-5">
+        <form method="POST" action="{% url 'realizarEjercicio' %}" id="calculadora" class="rounded-2 border border-1 p-5" style="background-color:antiquewhite;">
             {% csrf_token %}
-            <h4 class="mb-4 text-center">Metodo de diferencias divididas</h4>
+            <h4 class="mb-4 text-center">Calculadora de diferencias divididas</h4>
             <div class="input-group mb-3">
                 <input type="text" id="cantidad-puntos" class="form-control" placeholder="Ingrese la cantidad de puntos" aria-describedby="button-aceptar">
                 <button class="btn btn-primary" type="button" id="button-aceptar">Aceptar</button>
@@ -111,7 +112,7 @@
                     Ver paso a paso
                 </label>
                 <br>
-                <span class="text-warning">Valido solo para usuarios registrados</span>
+                <span class="text-warning-emphasis">Valido solo para usuarios registrados</span>
             </div>
             <div class="form-check mb-3">
                 <input class="form-check-input" disabled type="checkbox" id="verificarRespuesta">
@@ -119,52 +120,75 @@
                     Verificar respuesta
                 </label>
                 <br>
-                <span class="text-warning">Valido solo para usuarios registrados</span>
+                <span class="text-warning-emphasis">Valido solo para usuarios registrados</span>
+                <p>Notas al pie<sup>1</sup></p>
             </div>
             {% endif %}
             <button type="submit" id="Enviar" class="btn btn-primary">Submit</button>
         </form>
-        <div class="col">
-            {% if request.session.usuario %}
-            <img src="data:image/png;base64,{{ iamgenG }}" alt="Imagen grafica">
-            
-            <h1>Tabla Diferencia Dividida</h1>
-            <table>
-                <thead>
-                    <tr>
-                        {% for nombre_columna in nombres_columnas %}
-                            <th>{{ nombre_columna }}</th>
-                        {% endfor %}
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for fila in tabla %}
-                        <tr>
-                            {% for valor in fila %}
-                                <td>{{ valor }}</td>
-                            {% endfor %}
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        
-            <h1>Diferencias de cada iteracion</h1>
-            <p>{{ dDividida }}</p>
-        
-            <h1>Polinomio</h1>
-            <p>{{ polinomio }}</p>
-        
-            <h1>Polinomio simplificado</h1>
-            <p>{{ polisimple }}</p>
-            {% else %}
-            <h1>Polinomio</h1>
-            <p>{{ polinomio }}</p>
-        
-            <h1>Polinomio simplificado</h1>
-            <p>{{ polisimple }}</p>
+    </div>
+    <div class="pt-5 pb-5 text-center pe-5">
+        {% if request.session.usuario %}
+        <h1 class="pb-3">Grafica de la funcion</h1>
+            {% if iamgenG %}
+                <img src="data:image/png;base64,{{ iamgenG }}" alt="Imagen grafica">
+                {% else %}
+                <h5>Aun no hay grafica generada</h5>
             {% endif %}
-        </div>
-        </div>
-
+    </div> 
+    <div class="pt-5 ps-5 pb-5 bg-dark-subtle text-center pe-5">
+        <h1 class="pb-3">Tabla Diferencia Dividida</h1>
+        <table>
+            <thead>
+              <tr>
+                {% for nombre_columna in nombres_columnas %}
+                  <th>{{ nombre_columna }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for fila in tabla %}
+                <tr>
+                  {% for valor in fila %}
+                    {% if forloop.counter > 3 and forloop.parentloop.first %}
+                      <td style="background-color: antiquewhite;">{{ valor }}</td>
+                    {% else %}
+                      <td>{{ valor }}</td>
+                    {% endif %}
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          
+    </div>
+    <div class="pt-5 ps-5 pb-5 text-center pe-5">
+        <h1 class="pb-3">Diferencias de cada iteracion</h1>
+        <table>
+            <tbody>
+              <tr>
+                {% for valor in dDividida %}
+                  <td>{{ valor }}</td>
+                {% endfor %}
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="pt-5 ps-5 pb-5 text-center pe-5 bg-dark-subtle">
+        <h1 class="pb-3">Polinomio</h1>
+        <p>{{ polinomio }}</p>
+      
+        <h1 class="pb-3">Polinomio simplificado</h1>
+        <p>{{ polisimple | safe }}</p> <!-- Utilizar el filtro "safe" para renderizar las etiquetas HTML -->
+      
+        {% else %}
+        <h1 class="pb-3">Polinomio</h1>
+        <p>{{ polinomio }}</p>
+      
+        <h1 class="pb-3">Polinomio simplificado</h1>
+        <p><span class="exponente">{{ polisimple | safe }}</span></p> <!-- Utilizar el filtro "safe" para renderizar las etiquetas HTML -->
+      
+        {% endif %}     
+    </div>
 </div>
 {% endblock %}

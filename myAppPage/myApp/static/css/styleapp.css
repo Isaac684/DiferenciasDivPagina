@@ -6,6 +6,11 @@
     list-style: none;
 }
 
+.exponente {
+    font-size: 80%;
+    vertical-align: super;
+  }
+
 .hover-button {
     display: inline-block;
     padding: 10px 20px;
@@ -33,10 +38,10 @@
 table {
     border-collapse: collapse;
     width: 100%;
-  }
+}
 
-  th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: center;
-  }
+th, td {
+border: 1px solid black;
+padding: 8px;
+text-align: center;
+}

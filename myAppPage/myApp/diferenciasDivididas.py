@@ -1,12 +1,13 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sym
-# import pandas as pd
 
 class diferencias_divididas:
     x = []
     fx = []
     px = None
+    verificarResp = []
+    cadaiteracio = []
 
     def insercion_datos(self, valoresx, valoresy):  
         self.x = np.array(valoresx)
@@ -28,25 +29,43 @@ class diferencias_divididas:
         # simplifica multiplicando entre (x-xi)
         self.polisimple = polinomio.expand()
         self.px = sym.lambdify(x, self.polisimple)
+        polisimplex = self.polisimple
         
-        #df_tabla = pd.DataFrame(self.tabla, columns=self.titulo_tabla)
-        #df_tabla = df_tabla.set_index('i')
+        self.polisimple = self.mostrarcadena(str(polisimplex))
 
-        np.set_printoptions(precision=4, suppress=True)
-        print('\nTabla Diferencia Dividida')
-        # print(df_tabla)
-        print([self.titulo_tabla])
-        print(self.tabla)
-        print()
-        print('dDividida: ')
-        print(self.dDividida)
-        print()
-        print('polinomio: ')
-        print(polinomio)
-        print()
-        print('polinomio simplificado: ')
-        print(self.polisimple)
-        return  self.titulo_tabla, self.tabla, self.dDividida,polinomio, self.polisimple
+        return self.titulo_tabla, self.tabla, self.dDividida, polinomio, self.polisimple
+
+
+    def formatear_exponente(self, exponente):
+        # Verificar si el exponente es un número entero
+        if exponente.is_integer():
+            return str(int(exponente))
+        else:
+            return str(exponente)
+
+    def mostrarcadena(self, funcion):
+        # Expresión original
+        expresion_original = funcion
+
+        # Reemplazar "**" por "^" para los exponentes
+        expresion_reemplazada = expresion_original.replace("**", "^").replace('*', '')
+
+        # Formatear los exponentes utilizando la función formatear_exponente
+        expresion_formateada = ""
+        i = 0
+        while i < len(expresion_reemplazada):
+            if expresion_reemplazada[i] == "^":
+                j = i + 1
+                while j < len(expresion_reemplazada) and (expresion_reemplazada[j].isdigit() or expresion_reemplazada[j] == "-" or expresion_reemplazada[j] == "."):
+                    j += 1
+                exponente = expresion_reemplazada[i+1:j]
+                exponente_formateado = self.formatear_exponente(float(exponente))
+                expresion_formateada += "<sup>" + exponente_formateado + "</sup>"
+                i = j
+            else:
+                expresion_formateada += expresion_reemplazada[i]
+                i += 1
+        return expresion_formateada
     
     def mostrar_resultados(self):
         self.titulo_tabla = ['i', 'x', 'fx']
@@ -75,17 +94,24 @@ class diferencias_divididas:
             
             # if mostrarpasos and j < (m-1):
             #     print(f'\nDiferencias actual: {diferenciaActual}')
-            
+
             paso = j - 2  # inicia en 1
             while i < diagonal:
                 numerador = self.tabla[i + 1, j - 1] - self.tabla[i, j - 1]
                 denominador = (self.x[i + paso] - self.x[i])
                 self.tabla[i, j] = numerador / denominador
                 # if mostrarpasos:
-                #     print(f'Tomamos {self.tabla[i + 1, j - 1]} y le restamos {self.tabla[i, j - 1]} asi obtenemos el numerador')
-                #     print(f'Tomamos {self.x[i + paso]} y le restamos {self.x[i]} asi obtenemos el denominador')
-                #     print(f'Ahora dividimos el numerador entre el denominador osea {numerador}/{denominador} dando asi:')
-                #     print(f'[{self.tabla[i, j]}] ahora este dato lo agregamos a la tabla')
+                self.cadaiteracio.append({
+                    'titulo': f'{diferenciaActual}ª Diferencia Dividida',
+                    'primerDato':f'Tomamos {self.tabla[i + 1, j - 1]} y le restamos {self.tabla[i, j - 1]} asi obtenemos el numerador',
+                    'segundoDato': f'Tomamos {self.x[i + paso]} y le restamos {self.x[i]} asi obtenemos el denominador',
+                    'resultado': f'Ahora dividimos el numerador entre el denominador osea {numerador}/{denominador} dando asi: {self.tabla[i, j]} ahora este dato lo agregamos a la tabla',
+                })
+                # print(f'{diferenciaActual}ª Diferencia Dividida')    
+                # print(f'Tomamos {self.tabla[i + 1, j - 1]} y le restamos {self.tabla[i, j - 1]} asi obtenemos el numerador')
+                # print(f'Tomamos {self.x[i + paso]} y le restamos {self.x[i]} asi obtenemos el denominador')
+                # print(f'Ahora dividimos el numerador entre el denominador osea {numerador}/{denominador} dando asi:')
+                # print(f'[{self.tabla[i, j]}] ahora este dato lo agregamos a la tabla')
                 
                 i = i + 1    
             diagonal = diagonal - 1
@@ -95,12 +121,9 @@ class diferencias_divididas:
         self.dDividida = self.tabla[0, 3:]
 
         datos = self.calcular_polinomio()
+        for i in range(len(self.x)):
+            self.verificarResp.append(f'Evaluando la funcion obtenida en el punto {self.x[i]} da como resultado: {self.px(self.x[i])}')
         return datos
-        # if (mostrarpasos == False):
-        #     rsp = input('Desea verificar la respuesta?\nEscriba "S" o "s" para SI, sino presione enter:\n ')
-        #     if (rsp=='S' or rsp=='s'):
-        #         for i in range(len(self.x)):
-        #             print(f'Evaluando la funcion obtenida en el punto {self.x[i]} da como resultado: {self.px(self.x[i])}')
     
     def mostrar_grafica(self):
         if self.px is None:

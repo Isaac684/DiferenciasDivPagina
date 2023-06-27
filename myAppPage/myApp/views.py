@@ -299,7 +299,8 @@ def realizarEjercicio(request):
         image64 = base64.b64encode(buffer.getvalue()).decode()
 
         titulo_tabla, tabla, dDividida, polinomio, polisimple = mtdd.calcular_polinomio()
-        
+        print(mtdd.verificarResp)
+        print(mtdd.cadaiteracio)
         return render(request, 'homepageapp.html', {
             'iamgenG':image64,
             'tabla': tablaRedondeada,
