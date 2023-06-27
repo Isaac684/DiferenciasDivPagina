@@ -45,3 +45,76 @@ border: 1px solid black;
 padding: 8px;
 text-align: center;
 }
+
+@keyframes difuminado {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .difuminado {
+    animation: difuminado 1s ease-in-out;
+  }
+
+  @keyframes aparecer-arriba {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .aparecer-arriba {
+    animation: aparecer-arriba 1s ease-in-out;
+  }
+
+  @keyframes aparecer-derecha {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .aparecer-derecha {
+    animation: aparecer-derecha 1s ease-in-out;
+  }
+
+  @keyframes aparecer-abajo {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .aparecer-abajo {
+    animation: aparecer-abajo 1s ease-in-out;
+  }
+
+  @keyframes aparecer-izquierda {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .aparecer-izquierda {
+    animation: aparecer-izquierda 1s ease-in-out;
+  }

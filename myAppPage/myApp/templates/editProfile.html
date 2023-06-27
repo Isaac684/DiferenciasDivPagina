@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-<div class="container-fluid mt-5" style="background-color: #9fb8b5;">
+<div class="aparecer-abajo container-fluid mt-5" style="background-color: #9fb8b5;">
 
     <h4 class="text-center text-primary mt-3">Editar perfil</h4>
     <form method="POST" action="{% url 'saveEditedProfile' %}" class="cont">
@@ -13,14 +13,14 @@
             <div class="col-12">
                 <div class="input-box mb-4">
                     <span class="icon pr-4" style="line-height: 108px; right: 2px;"><ion-icon name="person-circle-outline"></ion-icon></span>
-                    <label class="my-1 text-white px-1">Full Name</label>
+                    <label class="my-1 text-white px-1">Nombre completo</label>
                     <input type="text" id="fullNameEdit" name="fullNameEdit" class="form-control rounded-pill" value="{% if fullNameEdit %}{{ fullNameEdit }}{% else %}{{ request.session.usuario.nombreCompleto }}{% endif %}">
                     <small id="fullNameErrorEdit" class="form-text text-danger text-center">{{ fullNameErrorEdit }}</small>
                 </div>
 
                 <div class="input-box mb-4">
                     <span class="icon pr-4" style="line-height: 108px; right: 2px;"><ion-icon name="mail-outline"></ion-icon></span>
-                    <label class="my-1 text-white px-1">Email</label>
+                    <label class="my-1 text-white px-1">Correo electrónico</label>
                     <input type="Email" id="emailEdit" name="emailEdit" class="form-control rounded-pill" value="{% if emailEdit %}{{ emailEdit }}{% else %}{{ request.session.usuario.correo }}{% endif %}">
                     {% if emailErrorEdit %}
                         <small id="emailErrorEdit" class="form-text text-danger text-center">{{ emailErrorEdit }}</small>
@@ -30,7 +30,7 @@
             <div class="col">
                 <div class="input-box mb-4">
                     <span class="icon pr-4" style="line-height: 108px; right: 2px;"><ion-icon name="person-circle-outline"></ion-icon></span>
-                    <label class="my-1 text-white px-1">User</label>
+                    <label class="my-1 text-white px-1">Usuario</label>
                     <input type="text" id="userEdit" name="userEdit" class="form-control rounded-pill" value="{% if userEdit %}{{ userEdit }}{% else %}{{ request.session.usuario.usuario }}{% endif %}">
                     {% if userErrorEdit %}
                         <small id="userErrorEdit" class="form-text text-danger text-center">{{ userErrorEdit }}</small>
@@ -39,7 +39,7 @@
 
                 <div class="input-box mb-4">
                     <span class="icon pr-4" style="line-height: 108px; right: 2px;"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <label class="my-1 text-white px-1">Password</label>
+                    <label class="my-1 text-white px-1">Contraseña</label>
                     <input type="text" id="passwordEdit" name="passwordEdit" class="form-control rounded-pill" value="{% if passwordEdit %}{{ passwordEdit }}{% else %}{{ request.session.usuario.contraseña }}{% endif %}">
                     {% if passwordErrorEdit %}
                         <small id="passwordErrorEdit" class="form-text text-danger text-center">{{ passwordErrorEdit }}</small>
