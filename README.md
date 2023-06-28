@@ -15,7 +15,7 @@ Para utilizar este método en tu proyecto de Django, sigue los siguientes pasos:
 1. Clona este repositorio en tu máquina local:
 
    ```
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/Isaac684/DiferenciasDivPagina.git
    ```
 
 2. Crea un entorno virtual de Python:
